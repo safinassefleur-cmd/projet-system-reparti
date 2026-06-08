@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ArtaNova – Galerie d'art en ligne. Achetez des tableaux originaux et des reproductions artistiques de qualité supérieure." />
+  <meta property="og:title" content="ArtaNova – L'art qui transforme vos espaces" />
+  <meta property="og:description" content="Découvrez et achetez des œuvres d'art uniques auprès d'artistes du monde entier." />
+  <title>ArtaNova – L'art qui transforme vos espaces</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══════════════════════════════════════════════ -->
+<nav class="nav" id="main-nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Arta<span>Nova</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" data-i18n="nav_home">Accueil</a></li>
+      <li><a href="pages/gallery.html" data-i18n="nav_gallery">Galerie</a></li>
+      <li><a href="pages/artists.html" data-i18n="nav_artists">Artistes</a></li>
+      <li><a href="#about" data-i18n="nav_about">À propos</a></li>
+      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Language -->
+      <div style="display:flex;gap:0.3rem;margin-right:0.5rem;">
+        <button class="lang-selector" data-lang="fr">FR</button>
+        <span style="color:var(--color-gray-400);font-size:0.75rem">|</span>
+        <button class="lang-selector" data-lang="en">EN</button>
+        <span style="color:var(--color-gray-400);font-size:0.75rem">|</span>
+        <button class="lang-selector" data-lang="ar">عر</button>
+      </div>
+
+      <!-- Theme -->
+      <button class="theme-toggle" aria-label="Changer le thème"></button>
+
+      <!-- Search -->
+      <a href="pages/gallery.html" class="nav-icon-btn" title="Rechercher">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </a>
+
+      <!-- Wishlist -->
+      <button class="nav-icon-btn" title="Favoris">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+
+      <!-- Cart -->
+      <button class="nav-icon-btn" onclick="openCart()" title="Panier">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge cart-count" style="display:none">0</span>
+      </button>
+
+      <!-- Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="pages/gallery.html">Galerie</a>
+  <a href="pages/artists.html">Artistes</a>
+  <a href="#about">À propos</a>
+  <a href="#contact">Contact</a>
+  <button onclick="document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow=''" style="color:var(--color-gray-400);font-size:2rem;margin-top:2rem;">✕</button>
+</div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-slides">
+    <div class="hero-slide hero-slide-1 active"></div>
+    <div class="hero-slide hero-slide-2"></div>
+    <div class="hero-slide hero-slide-3"></div>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <!-- Decorative art panels -->
+  <div class="hero-art" aria-hidden="true">
+    <div class="hero-art-panel" style="background:linear-gradient(135deg,#2d1810,#8B4513);"></div>
+    <div class="hero-art-panel" style="background:linear-gradient(135deg,#1a1a30,#4a2c90);"></div>
+    <div class="hero-art-panel" style="background:linear-gradient(135deg,#0d2818,#2d5a3d);"></div>
+  </div>
+
+  <div class="hero-content container">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span class="label text-gold">Galerie d'art premium</span>
+    </div>
+
+    <h1 class="hero-title" data-i18n="hero_tagline">
+      L'art qui <em>transforme</em> vos espaces
+    </h1>
+
+    <p class="hero-subtitle" data-i18n="hero_sub">
+      Découvrez des œuvres d'art uniques, sélectionnées par des experts, pour sublimer votre intérieur.
+    </p>
+
+    <div class="hero-actions">
+      <a href="pages/gallery.html" class="btn btn-primary" data-i18n="btn_explore">
+        Explorer la galerie
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </a>
+      <a href="pages/artists.html" class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);" data-i18n="btn_discover">
+        Découvrir les artistes
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="hero-stats container" aria-label="Statistiques">
+    <div class="hero-stat">
+      <div class="hero-stat-number">2 400+</div>
+      <div class="hero-stat-label">Œuvres disponibles</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">340+</div>
+      <div class="hero-stat-label">Artistes partenaires</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number">15 000+</div>
+      <div class="hero-stat-label">Clients satisfaits</div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero-dots">
+    <div class="hero-dot active"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span class="label" style="font-size:0.6rem;">Défiler</span>
+  </div>
+</section>
+
+<!-- ═══ CATEGORIES ════════════════════════════════════════════════ -->
+<section class="section-sm" style="background:var(--color-gray-100);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">
+        <div class="section-eyebrow-line"></div>
+        <span class="label text-gold" data-i18n="section_categories">Catégories</span>
+      </div>
+    </div>
+
+    <div class="categories-scroll stagger-children">
+      <div class="category-chip active">
+        <div class="category-icon">🎨</div>
+        <div class="category-name">Peinture</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">💧</div>
+        <div class="category-name">Aquarelle</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">📐</div>
+        <div class="category-name">Abstrait</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">📸</div>
+        <div class="category-name">Photographie</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">✏️</div>
+        <div class="category-name">Dessin</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">🖥️</div>
+        <div class="category-name">Art Numérique</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">🏺</div>
+        <div class="category-name">Sculpture</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">🌍</div>
+        <div class="category-name">Art Africain</div>
+      </div>
+      <div class="category-chip">
+        <div class="category-icon">☪️</div>
+        <div class="category-name">Calligraphie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURED WORKS ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header flex-between">
+      <div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span class="label text-gold" data-i18n="section_featured">Œuvres en vedette</span>
+        </div>
+        <h2 class="section-title">Sélection du moment</h2>
+      </div>
+      <a href="pages/gallery.html" class="btn btn-ghost">Voir tout →</a>
+    </div>
+
+    <div class="featured-grid fade-in">
+      <!-- Main featured -->
+      <div class="featured-main">
+        <div class="artwork-placeholder" style="background:linear-gradient(135deg,#1a0e05,#4a2c15,#8B4513);font-size:10rem;height:100%">🔥</div>
+        <div class="featured-info">
+          <div class="artwork-artist-name">Élise Morel</div>
+          <div class="artwork-title" style="color:white;font-family:var(--font-serif);font-size:1.3rem;margin:0.3rem 0">Danse des Flammes</div>
+          <div style="color:var(--color-gold);font-family:var(--font-serif);font-size:1.1rem;">5 200 €</div>
+        </div>
+      </div>
+
+      <!-- Secondary -->
+      <div class="featured-sm">
+        <div class="artwork-placeholder" style="background:linear-gradient(135deg,#0a0a15,#4a2c90);height:100%;font-size:6rem">🌌</div>
+        <div class="featured-info">
+          <div class="artwork-artist-name">Karim Benzara</div>
+          <div style="color:white;font-family:var(--font-serif)">Rêverie Nocturne</div>
+          <div style="color:var(--color-gold)">1 800 €</div>
+        </div>
+      </div>
+
+      <div class="featured-sm">
+        <div class="artwork-placeholder" style="background:linear-gradient(135deg,#051a0e,#2d5a8e);height:100%;font-size:6rem">🔵</div>
+        <div class="featured-info">
+          <div class="artwork-artist-name">Sofia Chen</div>
+          <div style="color:white;font-family:var(--font-serif)">Méditation Bleue</div>
+          <div style="color:var(--color-gold)">3 600 €</div>
+        </div>
+      </div>
+
+      <div class="featured-sm">
+        <div class="artwork-placeholder" style="background:linear-gradient(135deg,#2d1810,#8B4513);height:100%;font-size:6rem">🌅</div>
+        <div class="featured-info">
+          <div class="artwork-artist-name">Élise Morel</div>
+          <div style="color:white;font-family:var(--font-serif)">Lumières de l'Aube</div>
+          <div style="color:var(--color-gold)">2 400 €</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POPULAR ARTWORKS GRID ═════════════════════════════════════ -->
+<section class="section" style="background:var(--color-gray-100);">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-eyebrow centered">
+        <div class="section-eyebrow-line"></div>
+        <span class="label text-gold">Tableaux populaires</span>
+        <div class="section-eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">Œuvres les plus appréciées</h2>
+      <p class="section-subtitle">Des créations uniques, sélectionnées pour leur excellence artistique et leur pouvoir d'évocation.</p>
+    </div>
+
+    <div class="artwork-grid stagger-children" id="home-artwork-grid">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="text-center mt-lg">
+      <a href="pages/gallery.html" class="btn btn-outline">Voir toute la collection</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTISTS ═══════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header flex-between">
+      <div>
+        <div class="section-eyebrow">
+          <div class="section-eyebrow-line"></div>
+          <span class="label text-gold" data-i18n="section_artists">Artistes vedettes</span>
+        </div>
+        <h2 class="section-title">Rencontrez nos artistes</h2>
+      </div>
+      <a href="pages/artists.html" class="btn btn-ghost">Tous les artistes →</a>
+    </div>
+
+    <div class="artists-grid stagger-children">
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">👩‍🎨</div></div>
+        <div class="artist-name">Élise Morel</div>
+        <div class="artist-specialty">Peinture Classique</div>
+        <div class="artist-works-count">24 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">👨‍🎨</div></div>
+        <div class="artist-name">Karim Benzara</div>
+        <div class="artist-specialty">Art Contemporain</div>
+        <div class="artist-works-count">18 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">👩‍🎨</div></div>
+        <div class="artist-name">Sofia Chen</div>
+        <div class="artist-specialty">Art Abstrait</div>
+        <div class="artist-works-count">31 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">👨‍🎨</div></div>
+        <div class="artist-name">Hassan Tazi</div>
+        <div class="artist-specialty">Aquarelle & Illustration</div>
+        <div class="artist-works-count">15 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">📸</div></div>
+        <div class="artist-name">Marie Dubois</div>
+        <div class="artist-specialty">Photographie Artistique</div>
+        <div class="artist-works-count">9 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
+        <div class="artist-avatar"><div class="artist-avatar-placeholder">💻</div></div>
+        <div class="artist-name">Léo Fontaine</div>
+        <div class="artist-specialty">Art Numérique</div>
+        <div class="artist-works-count">22 œuvres disponibles</div>
+        <button class="follow-btn">Suivre</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROMO BANNER ══════════════════════════════════════════════ -->
+<section style="background:linear-gradient(135deg,var(--color-black),#2d1a0a);padding:4rem 0;overflow:hidden;position:relative;">
+  <div style="position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;">
+      <div>
+        <span class="label text-gold">Collection exclusive</span>
+        <h2 style="font-size:clamp(2rem,4vw,3rem);color:white;margin:0.8rem 0 1rem;">Printemps – Été 2024</h2>
+        <p style="color:var(--color-gray-400);max-width:50ch;line-height:1.7;">Explorez notre nouvelle collection saisonnière. Des œuvres lumineuses et contemporaines, parfaites pour célébrer la vie et la beauté.</p>
+      </div>
+      <div style="text-align:center;flex-shrink:0;">
+        <div style="font-size:6rem;margin-bottom:1rem;">🌸</div>
+        <a href="pages/gallery.html" class="btn btn-primary">Voir la collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <div class="section-eyebrow centered">
+        <div class="section-eyebrow-line"></div>
+        <span class="label text-gold" data-i18n="section_testimonials">Témoignages</span>
+        <div class="section-eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">Ce que disent nos clients</h2>
+    </div>
+
+    <div class="testimonials-track stagger-children">
+      <div class="testimonial-card">
+        <p class="testimonial-text">« J'ai commandé un tableau de Sofia Chen pour mon salon. La qualité est époustouflante, la livraison rapide et le service client exceptionnel. Je recommande vivement ! »</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩</div>
+          <div>
+            <div class="testimonial-name">Camille Rousseau</div>
+            <div class="testimonial-location">Paris, France ⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">« Une plateforme magnifique qui valorise vraiment les artistes. J'ai vendu mes premières œuvres en 48h. L'interface est intuitive et le support réactif. »</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👨</div>
+          <div>
+            <div class="testimonial-name">Karim Benzara</div>
+            <div class="testimonial-location">Casablanca, Maroc ⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">« Les recommandations personnalisées m'ont fait découvrir des artistes que je n'aurais jamais trouvés seul. Mon bureau est maintenant une vraie galerie d'art. »</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👩</div>
+          <div>
+            <div class="testimonial-name">Amira Benali</div>
+            <div class="testimonial-location">Dubaï, EAU ⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ NEWSLETTER ════════════════════════════════════════════════ -->
+<section class="newsletter" id="newsletter">
+  <div class="container">
+    <div class="gold-divider centered"></div>
+    <h2 class="newsletter-title" data-i18n="newsletter_title">Restez inspiré(e)</h2>
+    <p class="newsletter-subtitle">Recevez chaque semaine nos nouvelles collections, les actualités des artistes et des offres exclusives.</p>
+    <form class="newsletter-form" id="newsletter-form" onsubmit="return false;">
+      <input class="newsletter-input" type="email" placeholder="Votre adresse email" data-i18n="newsletter_placeholder" required />
+      <button type="submit" class="newsletter-submit" data-i18n="newsletter_cta">S'abonner</button>
+    </form>
+    <p style="margin-top:1rem;font-size:0.75rem;color:var(--color-gray-500);">En vous abonnant, vous acceptez notre politique de confidentialité. Désabonnement en un clic.</p>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════ -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Arta<span>Nova</span></div>
+        <p class="footer-tagline">La première galerie d'art en ligne qui connecte les artistes et les amateurs d'art à travers le monde.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social" title="Instagram">📷</a>
+          <a href="#" class="footer-social" title="Facebook">📘</a>
+          <a href="#" class="footer-social" title="Twitter">🐦</a>
+          <a href="#" class="footer-social" title="Pinterest">📌</a>
+          <a href="#" class="footer-social" title="LinkedIn">💼</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Galerie</div>
+        <ul class="footer-links">
+          <li><a href="pages/gallery.html">Toutes les œuvres</a></li>
+          <li><a href="pages/gallery.html">Peintures</a></li>
+          <li><a href="pages/gallery.html">Sculptures</a></li>
+          <li><a href="pages/gallery.html">Art numérique</a></li>
+          <li><a href="pages/gallery.html">Photographie</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Artistes</div>
+        <ul class="footer-links">
+          <li><a href="pages/artists.html">Tous les artistes</a></li>
+          <li><a href="pages/artists.html">Artistes vedettes</a></li>
+          <li><a href="pages/dashboard.html">Devenir artiste</a></li>
+          <li><a href="#">Programme partenaire</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Aide</div>
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Paiements sécurisés</a></li>
+          <li><a href="#">Certificat d'authenticité</a></li>
+          <li><a href="#">Nous contacter</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 ArtaNova. Tous droits réservés.</p>
+      <ul class="footer-bottom-links">
+        <li><a href="#">Confidentialité</a></li>
+        <li><a href="#">Conditions</a></li>
+        <li><a href="#">Cookies</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ CART SIDEBAR ══════════════════════════════════════════════ -->
+<div class="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Mon Panier</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <p style="text-align:center;color:var(--color-gray-400);padding:2rem;">Votre panier est vide</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Total</span>
+      <span id="cart-total">0 €</span>
+    </div>
+    <p style="font-size:0.75rem;color:var(--color-gray-400);margin-bottom:1rem;">Livraison offerte à partir de 500€</p>
+    <button class="cart-checkout-btn" onclick="location.href='pages/checkout.html'">Passer la commande</button>
+  </div>
+</aside>
+
+<!-- ═══ QUICK VIEW MODAL ══════════════════════════════════════════ -->
+<div class="modal-overlay" id="quick-view-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="quick-view-modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-body">
+      <div class="modal-image">🎨</div>
+      <div class="modal-info">
+        <div class="modal-artwork-artist" style="font-size:0.75rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;"></div>
+        <h3 class="modal-artwork-title" style="font-family:var(--font-serif);font-size:1.8rem;margin-bottom:1rem;"></h3>
+        <div class="modal-artwork-price" style="font-family:var(--font-serif);font-size:2rem;margin-bottom:1.5rem;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin-bottom:1.5rem;">
+          <div style="padding:0.8rem;background:var(--color-gray-100);">
+            <div class="label" style="font-size:0.65rem;color:var(--color-gray-400);margin-bottom:0.3rem;">Technique</div>
+            <div class="modal-artwork-technique" style="font-size:0.9rem;"></div>
+          </div>
+          <div style="padding:0.8rem;background:var(--color-gray-100);">
+            <div class="label" style="font-size:0.65rem;color:var(--color-gray-400);margin-bottom:0.3rem;">Dimensions</div>
+            <div class="modal-artwork-size" style="font-size:0.9rem;"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.8rem;">
+          <button class="modal-cart-btn btn-cart" style="flex:1;">Ajouter au panier</button>
+          <a href="pages/product.html" class="btn btn-outline" style="flex:1;justify-content:center;">Voir détails</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHAT WIDGET ═══════════════════════════════════════════════ -->
+<div class="chat-widget">
+  <div class="chat-box" id="chat-box">
+    <div class="chat-box-header">
+      <div class="chat-status-dot"></div>
+      <div>
+        <div style="font-weight:600;font-size:0.9rem;">Support ArtaNova</div>
+        <div style="font-size:0.7rem;opacity:0.7;">En ligne · Répond en quelques minutes</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Bonjour ! 👋 Bienvenue sur ArtaNova. Comment puis-je vous aider à trouver l'œuvre parfaite ?</div>
+    </div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chat-input" type="text" placeholder="Écrivez votre message..." />
+      <button class="chat-send" id="chat-send">→</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle" title="Support client">💬</button>
+</div>
+
+<!-- Toast container -->
+<div class="toast-container"></div>
+
+<script src="js/app.js"></script>
+<script>
+  // Render home artwork grid
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('home-artwork-grid');
+    if (grid) {
+      grid.innerHTML = artworks.slice(0, 8).map(a => renderArtworkCard(a)).join('');
+      initWishlistButtons();
+    }
+
+    // Category chip interaction
+    document.querySelectorAll('.category-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>

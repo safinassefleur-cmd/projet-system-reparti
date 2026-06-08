@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de bord – ArtaNova</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="dashboard-sidebar">
+    <div class="dashboard-logo">Arta<span>Nova</span></div>
+
+    <nav>
+      <ul class="dashboard-nav">
+        <li class="dashboard-nav-item">
+          <a href="#" class="active" onclick="showSection('overview',this)">
+            📊 Vue d'ensemble
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" onclick="showSection('artworks',this)">
+            🖼️ Mes œuvres
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" onclick="showSection('orders',this)">
+            📦 Commandes
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" onclick="showSection('messages',this)">
+            💬 Messages
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" onclick="showSection('stats',this)">
+            📈 Statistiques
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" onclick="showSection('profile',this)">
+            👤 Mon profil
+          </a>
+        </li>
+        <li class="dashboard-nav-item" style="margin-top:2rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;">
+          <a href="../index.html">
+            🌐 Voir le site
+          </a>
+        </li>
+        <li class="dashboard-nav-item">
+          <a href="#" style="color:#c0392b !important;" onclick="showToast('👋 Déconnexion...')">
+            🚪 Se déconnecter
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Artist info -->
+    <div style="padding:1.5rem;margin-top:auto;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;">
+      <div style="display:flex;align-items:center;gap:0.8rem;">
+        <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">👩‍🎨</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600;color:white;">Élise Morel</div>
+          <div style="font-size:0.7rem;color:var(--color-gray-400);">Artiste Vérifié ✓</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+
+    <!-- ── OVERVIEW ── -->
+    <div id="section-overview">
+      <div class="dashboard-greeting">
+        <h1 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:0.3rem;">Bonjour, Élise 👋</h1>
+        <p style="color:var(--color-gray-500);">Voici un aperçu de votre activité — Juin 2024</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-label">Revenus du mois</div>
+          <div class="stat-card-value">14 800 €</div>
+          <div class="stat-card-change">↑ +23% vs mois dernier</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Œuvres vendues</div>
+          <div class="stat-card-value">8</div>
+          <div class="stat-card-change">↑ +2 vs mois dernier</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Vues du profil</div>
+          <div class="stat-card-value">3 420</div>
+          <div class="stat-card-change">↑ +15%</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Note moyenne</div>
+          <div class="stat-card-value">4.9 ★</div>
+          <div class="stat-card-change">→ Stable</div>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Recent orders -->
+        <div class="dashboard-card">
+          <h3 class="dashboard-card-title">Commandes récentes</h3>
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Commande</th>
+                <th>Œuvre</th>
+                <th>Client</th>
+                <th>Montant</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#AN-2024-0891</td>
+                <td>Lumières de l'Aube</td>
+                <td>Camille R.</td>
+                <td>2 400 €</td>
+                <td><span class="order-status delivered">Livré</span></td>
+              </tr>
+              <tr>
+                <td>#AN-2024-0878</td>
+                <td>Danse des Flammes</td>
+                <td>Thomas M.</td>
+                <td>5 200 €</td>
+                <td><span class="order-status shipped">Expédié</span></td>
+              </tr>
+              <tr>
+                <td>#AN-2024-0865</td>
+                <td>Sérénité d'Été</td>
+                <td>Amira B.</td>
+                <td>1 800 €</td>
+                <td><span class="order-status pending">En attente</span></td>
+              </tr>
+              <tr>
+                <td>#AN-2024-0852</td>
+                <td>Portrait en Or</td>
+                <td>Pierre L.</td>
+                <td>3 200 €</td>
+                <td><span class="order-status delivered">Livré</span></td>
+              </tr>
+              <tr>
+                <td>#AN-2024-0841</td>
+                <td>Méditation Bleue</td>
+                <td>Sarah K.</td>
+                <td>2 200 €</td>
+                <td><span class="order-status delivered">Livré</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Quick actions / stats -->
+        <div>
+          <div class="dashboard-card" style="margin-bottom:1.5rem;">
+            <h3 class="dashboard-card-title">Actions rapides</h3>
+            <div style="display:flex;flex-direction:column;gap:0.8rem;">
+              <button class="btn btn-primary w-full" onclick="showSection2('artworks')">+ Ajouter une œuvre</button>
+              <button class="btn btn-outline w-full" onclick="location.href='artist-profile.html'">Voir mon profil public</button>
+              <button class="btn btn-ghost">Télécharger le rapport PDF</button>
+            </div>
+          </div>
+
+          <div class="dashboard-card">
+            <h3 class="dashboard-card-title">Performance</h3>
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.4rem;">
+                  <span>Taux de conversion</span><span style="color:var(--color-gold);font-weight:600;">4.8%</span>
+                </div>
+                <div style="height:6px;background:var(--color-gray-100);border-radius:3px;overflow:hidden;">
+                  <div style="width:48%;height:100%;background:var(--color-gold);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.4rem;">
+                  <span>Satisfaction client</span><span style="color:var(--color-gold);font-weight:600;">98%</span>
+                </div>
+                <div style="height:6px;background:var(--color-gray-100);border-radius:3px;overflow:hidden;">
+                  <div style="width:98%;height:100%;background:var(--color-gold);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:0.4rem;">
+                  <span>Profil complété</span><span style="color:var(--color-gold);font-weight:600;">85%</span>
+                </div>
+                <div style="height:6px;background:var(--color-gray-100);border-radius:3px;overflow:hidden;">
+                  <div style="width:85%;height:100%;background:var(--color-gold);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ARTWORKS ── -->
+    <div id="section-artworks" style="display:none;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+        <h1 style="font-family:var(--font-serif);font-size:2rem;">Mes œuvres (24)</h1>
+        <button class="btn btn-primary" onclick="showAddForm()">+ Ajouter une œuvre</button>
+      </div>
+
+      <!-- Add form (hidden by default) -->
+      <div id="add-artwork-form" style="display:none;background:var(--color-white);padding:2rem;margin-bottom:2rem;border-left:3px solid var(--color-gold);">
+        <h3 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:1.5rem;">Nouvelle œuvre</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Titre de l'œuvre *</label>
+            <input type="text" placeholder="Ex: Lumières d'Automne" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Prix (€) *</label>
+            <input type="number" placeholder="Ex: 1500" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Technique *</label>
+            <select style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);appearance:none;">
+              <option>Huile sur toile</option>
+              <option>Acrylique</option>
+              <option>Aquarelle</option>
+              <option>Art Numérique</option>
+              <option>Photographie</option>
+              <option>Sculpture</option>
+              <option>Dessin</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Dimensions *</label>
+            <input type="text" placeholder="Ex: 80 × 100 cm" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div style="grid-column:span 2;">
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Description artistique *</label>
+            <textarea rows="4" placeholder="Décrivez votre œuvre, son histoire, son inspiration…" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);resize:vertical;font-family:inherit;"></textarea>
+          </div>
+          <div style="grid-column:span 2;">
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Images *</label>
+            <div style="border:2px dashed var(--color-gray-200);padding:3rem;text-align:center;cursor:pointer;" onclick="showToast('📷 Sélecteur de fichiers')">
+              <div style="font-size:3rem;margin-bottom:0.8rem;">📷</div>
+              <p style="color:var(--color-gray-400);font-size:0.9rem;">Glisser-déposer vos images ici ou cliquer pour sélectionner</p>
+              <p style="font-size:0.75rem;color:var(--color-gray-400);margin-top:0.3rem;">JPEG, PNG · Max 10 MB · Min 1000px</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+          <button class="btn btn-primary" onclick="showToast('✓ Œuvre publiée avec succès !');document.getElementById('add-artwork-form').style.display='none';">Publier l'œuvre</button>
+          <button class="btn btn-outline" onclick="document.getElementById('add-artwork-form').style.display='none';">Annuler</button>
+        </div>
+      </div>
+
+      <!-- Artworks table -->
+      <div class="dashboard-card">
+        <table class="orders-table" style="width:100%;">
+          <thead>
+            <tr>
+              <th>Œuvre</th>
+              <th>Prix</th>
+              <th>Vues</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:0.8rem;"><div style="width:3rem;height:3rem;background:linear-gradient(135deg,#1a0e05,#4a2c15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🔥</div><span style="font-weight:500;">Danse des Flammes</span></div></td>
+              <td style="font-weight:600;">5 200 €</td>
+              <td>1 240</td>
+              <td><span class="order-status delivered">En ligne</span></td>
+              <td><div style="display:flex;gap:0.5rem;"><button onclick="showToast('✏️ Mode édition')" style="padding:0.3rem 0.8rem;border:1px solid var(--color-gray-200);font-size:0.75rem;cursor:pointer;background:none;">Modifier</button><button onclick="showToast('⚠️ Œuvre retirée')" style="padding:0.3rem 0.8rem;border:1px solid #c0392b;color:#c0392b;font-size:0.75rem;cursor:pointer;background:none;">Retirer</button></div></td>
+            </tr>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:0.8rem;"><div style="width:3rem;height:3rem;background:linear-gradient(135deg,#2d1810,#8B4513);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🌅</div><span style="font-weight:500;">Lumières de l'Aube</span></div></td>
+              <td style="font-weight:600;">2 400 €</td>
+              <td>876</td>
+              <td><span class="order-status delivered">En ligne</span></td>
+              <td><div style="display:flex;gap:0.5rem;"><button onclick="showToast('✏️ Mode édition')" style="padding:0.3rem 0.8rem;border:1px solid var(--color-gray-200);font-size:0.75rem;cursor:pointer;background:none;">Modifier</button><button onclick="showToast('⚠️ Œuvre retirée')" style="padding:0.3rem 0.8rem;border:1px solid #c0392b;color:#c0392b;font-size:0.75rem;cursor:pointer;background:none;">Retirer</button></div></td>
+            </tr>
+            <tr>
+              <td><div style="display:flex;align-items:center;gap:0.8rem;"><div style="width:3rem;height:3rem;background:linear-gradient(135deg,#0d2818,#2d5a3d);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">🌿</div><span style="font-weight:500;">Forêt Mystique</span></div></td>
+              <td style="font-weight:600;">3 800 €</td>
+              <td>543</td>
+              <td><span class="order-status pending">Brouillon</span></td>
+              <td><div style="display:flex;gap:0.5rem;"><button onclick="showToast('✓ Œuvre publiée !')" style="padding:0.3rem 0.8rem;border:1px solid var(--color-gold);color:var(--color-gold);font-size:0.75rem;cursor:pointer;background:none;">Publier</button><button onclick="showToast('✏️ Mode édition')" style="padding:0.3rem 0.8rem;border:1px solid var(--color-gray-200);font-size:0.75rem;cursor:pointer;background:none;">Modifier</button></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── ORDERS ── -->
+    <div id="section-orders" style="display:none;">
+      <h1 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Commandes reçues</h1>
+      <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="stat-card">
+          <div class="stat-card-label">En attente</div>
+          <div class="stat-card-value" style="color:#856404;">3</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">En transit</div>
+          <div class="stat-card-value" style="color:#0c5460;">2</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Livrées</div>
+          <div class="stat-card-value" style="color:#155724;">143</div>
+        </div>
+      </div>
+      <div class="dashboard-card">
+        <h3 class="dashboard-card-title">Toutes les commandes</h3>
+        <table class="orders-table">
+          <thead>
+            <tr><th>ID</th><th>Date</th><th>Œuvre</th><th>Client</th><th>Pays</th><th>Montant</th><th>Statut</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>#AN-0891</td><td>08/06/2024</td><td>Lumières de l'Aube</td><td>Camille R.</td><td>🇫🇷</td><td>2 400 €</td><td><span class="order-status delivered">Livré</span></td></tr>
+            <tr><td>#AN-0878</td><td>05/06/2024</td><td>Danse des Flammes</td><td>Thomas M.</td><td>🇫🇷</td><td>5 200 €</td><td><span class="order-status shipped">Expédié</span></td></tr>
+            <tr><td>#AN-0865</td><td>02/06/2024</td><td>Sérénité d'Été</td><td>Amira B.</td><td>🇦🇪</td><td>1 800 €</td><td><span class="order-status pending">En attente</span></td></tr>
+            <tr><td>#AN-0852</td><td>28/05/2024</td><td>Portrait en Or</td><td>Pierre L.</td><td>🇨🇭</td><td>3 200 €</td><td><span class="order-status delivered">Livré</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── MESSAGES ── -->
+    <div id="section-messages" style="display:none;">
+      <h1 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Messages (5 non lus)</h1>
+      <div style="display:grid;grid-template-columns:280px 1fr;gap:1.5rem;height:600px;">
+        <div style="background:var(--color-white);overflow-y:auto;">
+          <div style="padding:0.5rem;">
+            <input type="text" placeholder="Rechercher…" style="width:100%;padding:0.6rem;border:1px solid var(--color-gray-200);font-size:0.85rem;outline:none;background:var(--color-gray-100);color:var(--color-black);" />
+          </div>
+          <div id="msg-list">
+            <div class="msg-item" style="padding:1rem;border-bottom:1px solid var(--color-gray-100);cursor:pointer;background:var(--color-gold);color:white;" onclick="selectMsg(this,'Camille Rousseau','Bonjour, je suis très intéressée par votre tableau « Lumières de l\'Aube ». Pourriez-vous me préciser si la texture est très épaisse ?')">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-weight:600;font-size:0.9rem;">Camille Rousseau</span><span style="font-size:0.7rem;opacity:0.8;">10:30</span></div>
+              <div style="font-size:0.8rem;opacity:0.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">À propos de « Lumières de l'Aube »</div>
+            </div>
+            <div class="msg-item" style="padding:1rem;border-bottom:1px solid var(--color-gray-100);cursor:pointer;" onclick="selectMsg(this,'Thomas Martin','Je souhaiterais commander une œuvre sur mesure pour mon bureau. Quels sont vos tarifs ?')">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-weight:600;font-size:0.9rem;">Thomas Martin</span><span style="font-size:0.7rem;color:var(--color-gray-400);">Hier</span></div>
+              <div style="font-size:0.8rem;color:var(--color-gray-400);">Commission sur mesure</div>
+            </div>
+            <div class="msg-item" style="padding:1rem;border-bottom:1px solid var(--color-gray-100);cursor:pointer;" onclick="selectMsg(this,'Galerie Perrotin','Nous serions ravis de vous accueillir pour une exposition solo en septembre.')">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.3rem;"><span style="font-weight:600;font-size:0.9rem;">Galerie Perrotin</span><span style="font-size:0.7rem;color:var(--color-gray-400);">Lundi</span></div>
+              <div style="font-size:0.8rem;color:var(--color-gray-400);">Proposition d'exposition</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:var(--color-white);display:flex;flex-direction:column;">
+          <div style="padding:1.2rem;border-bottom:1px solid var(--color-gray-100);font-weight:600;" id="msg-name">Camille Rousseau</div>
+          <div style="flex:1;padding:1.5rem;overflow-y:auto;display:flex;flex-direction:column;gap:1rem;" id="msg-content">
+            <div class="chat-msg bot" style="max-width:70%;font-size:0.9rem;">Bonjour, je suis très intéressée par votre tableau « Lumières de l'Aube ». Pourriez-vous me préciser si la texture est très épaisse ?</div>
+            <div class="chat-msg user" style="max-width:70%;font-size:0.9rem;align-self:flex-end;">Bonjour Camille ! Oui, j'utilise des couches épaisses d'huile avec une spatule, ce qui donne un relief très prononcé. C'est l'une des caractéristiques de mon travail.</div>
+            <div class="chat-msg bot" style="max-width:70%;font-size:0.9rem;">Magnifique ! Et est-il possible d'avoir un encadrement sur mesure ?</div>
+          </div>
+          <div style="padding:1rem;border-top:1px solid var(--color-gray-100);display:flex;gap:0.8rem;">
+            <input type="text" placeholder="Écrire un message…" id="reply-input" style="flex:1;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" onkeydown="if(event.key==='Enter')sendReply()" />
+            <button class="chat-send" style="padding:0.8rem 1.5rem;" onclick="sendReply()">Envoyer →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STATS ── -->
+    <div id="section-stats" style="display:none;">
+      <h1 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Statistiques de ventes</h1>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-card-label">Total des revenus</div><div class="stat-card-value">89 400 €</div><div class="stat-card-change">↑ +34% vs 2023</div></div>
+        <div class="stat-card"><div class="stat-card-label">Œuvres vendues</div><div class="stat-card-value">148</div><div class="stat-card-change">↑ +20 œuvres</div></div>
+        <div class="stat-card"><div class="stat-card-label">Clients uniques</div><div class="stat-card-value">124</div><div class="stat-card-change">↑ +32%</div></div>
+        <div class="stat-card"><div class="stat-card-label">Panier moyen</div><div class="stat-card-value">2 840 €</div><div class="stat-card-change">↑ +8%</div></div>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h3 class="dashboard-card-title">Revenus par mois (2024)</h3>
+          <div style="display:flex;align-items:flex-end;gap:0.8rem;height:200px;padding-top:1rem;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">8.4K</span>
+              <div style="background:var(--color-gold);width:100%;height:60%;opacity:0.7;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Jan</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">9.2K</span>
+              <div style="background:var(--color-gold);width:100%;height:66%;opacity:0.75;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Fév</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">12.1K</span>
+              <div style="background:var(--color-gold);width:100%;height:86%;opacity:0.8;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Mar</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">11.4K</span>
+              <div style="background:var(--color-gold);width:100%;height:81%;opacity:0.85;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Avr</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">13.8K</span>
+              <div style="background:var(--color-gold);width:100%;height:98%;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Mai</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:0.3rem;">
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">14.8K</span>
+              <div style="background:var(--color-gold);width:100%;height:100%;"></div>
+              <span style="font-size:0.65rem;color:var(--color-gray-400);">Jun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <h3 class="dashboard-card-title">Top œuvres</h3>
+          <div style="display:flex;flex-direction:column;gap:0.8rem;">
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;">
+              <span style="font-family:var(--font-serif);font-size:1.2rem;color:var(--color-gold);width:1.5rem;text-align:center;">1</span>
+              <span style="flex:1;">Danse des Flammes</span>
+              <span style="font-weight:700;">5 200 €</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;">
+              <span style="font-family:var(--font-serif);font-size:1.2rem;color:var(--color-gray-300);width:1.5rem;text-align:center;">2</span>
+              <span style="flex:1;">Lumières de l'Aube</span>
+              <span style="font-weight:700;">2 400 €</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.85rem;">
+              <span style="font-family:var(--font-serif);font-size:1.2rem;color:var(--color-gray-400);width:1.5rem;text-align:center;">3</span>
+              <span style="flex:1;">Portrait en Or</span>
+              <span style="font-weight:700;">3 200 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PROFILE ── -->
+    <div id="section-profile" style="display:none;">
+      <h1 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Mon profil</h1>
+      <div class="dashboard-card" style="max-width:700px;">
+        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--color-gray-100);">
+          <div style="width:6rem;height:6rem;border-radius:50%;background:linear-gradient(135deg,var(--color-gold),var(--color-gold-dark));display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer;" onclick="showToast('📷 Changer la photo')">👩‍🎨</div>
+          <div>
+            <div style="font-family:var(--font-serif);font-size:1.3rem;">Élise Morel</div>
+            <div style="font-size:0.8rem;color:var(--color-gold);margin:0.3rem 0;">✓ Artiste vérifiée</div>
+            <button onclick="showToast('📷 Modifier la photo')" style="font-size:0.75rem;color:var(--color-gray-400);background:none;border:1px solid var(--color-gray-200);padding:0.3rem 0.8rem;cursor:pointer;">Changer la photo</button>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Prénom</label>
+            <input type="text" value="Élise" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Nom</label>
+            <input type="text" value="Morel" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div style="grid-column:span 2;">
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Biographie</label>
+            <textarea rows="4" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);resize:vertical;font-family:inherit;">Née à Paris en 1978, Élise Morel est une artiste peintre spécialisée en expressionnisme contemporain. Formée aux Beaux-Arts de Paris, elle expose régulièrement en Europe et en Asie.</textarea>
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Spécialité</label>
+            <input type="text" value="Peinture Classique, Expressionnisme" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+          <div>
+            <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Pays</label>
+            <input type="text" value="France 🇫🇷" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="margin-top:1.5rem;" onclick="showToast('✓ Profil mis à jour')">Enregistrer les modifications</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast-container"></div>
+
+<script src="../js/app.js"></script>
+<script>
+  function showSection(sectionId, link) {
+    ['overview','artworks','orders','messages','stats','profile'].forEach(id => {
+      const el = document.getElementById('section-' + id);
+      if (el) el.style.display = id === sectionId ? '' : 'none';
+    });
+    document.querySelectorAll('.dashboard-nav-item a').forEach(a => a.classList.remove('active'));
+    if (link) link.classList.add('active');
+  }
+
+  function showSection2(id) { showSection(id, null); }
+
+  function showAddForm() {
+    const form = document.getElementById('add-artwork-form');
+    form.style.display = form.style.display === 'none' ? '' : 'none';
+  }
+
+  function selectMsg(el, name, msg) {
+    document.querySelectorAll('.msg-item').forEach(m => {
+      m.style.background = '';
+      m.style.color = '';
+    });
+    el.style.background = 'var(--color-gold)';
+    el.style.color = 'white';
+    document.getElementById('msg-name').textContent = name;
+    document.getElementById('msg-content').innerHTML = `<div class="chat-msg bot" style="max-width:70%;font-size:0.9rem;">${msg}</div>`;
+  }
+
+  function sendReply() {
+    const input = document.getElementById('reply-input');
+    const text = input.value.trim();
+    if (!text) return;
+    const container = document.getElementById('msg-content');
+    const msg = document.createElement('div');
+    msg.className = 'chat-msg user';
+    msg.style.cssText = 'max-width:70%;font-size:0.9rem;align-self:flex-end;';
+    msg.textContent = text;
+    container.appendChild(msg);
+    container.scrollTop = container.scrollHeight;
+    input.value = '';
+  }
+</script>
+</body>
+</html>

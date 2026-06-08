@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danse des Flammes – ArtaNova</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav scrolled" id="main-nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">Arta<span>Nova</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="gallery.html">Galerie</a></li>
+      <li><a href="artists.html">Artistes</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Thème"></button>
+      <button class="nav-icon-btn" onclick="openCart()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main style="padding-top:5rem;">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="../index.html">Accueil</a> ›
+      <a href="gallery.html">Galerie</a> ›
+      <a href="gallery.html">Peinture</a> ›
+      <span style="color:var(--color-black);">Danse des Flammes</span>
+    </div>
+
+    <!-- Product Layout -->
+    <div class="product-layout">
+
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <div class="product-main-image">
+          <div class="artwork-placeholder" style="background:linear-gradient(135deg,#1a0e05,#4a2c15,#8B4513);width:100%;height:100%;font-size:12rem;">🔥</div>
+          <div class="zoom-hint">🔍 Cliquer pour zoomer</div>
+        </div>
+        <div class="product-thumbnails">
+          <div class="product-thumb active">🔥</div>
+          <div class="product-thumb">🎨</div>
+          <div class="product-thumb">🖼️</div>
+          <div class="product-thumb">✦</div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <a href="artist-profile.html" class="product-artist-link">Élise Morel · Artiste française</a>
+
+        <h1 class="product-title">Danse des Flammes</h1>
+
+        <div class="product-rating">
+          <span class="stars" style="color:var(--color-gold);font-size:1.1rem;">★★★★★</span>
+          <span style="font-size:0.9rem;color:var(--color-gray-500);">4.9 (42 avis)</span>
+          <span style="color:var(--color-green,#27ae60);font-size:0.8rem;margin-left:auto;">✓ Certificat d'authenticité inclus</span>
+        </div>
+
+        <div class="product-price-block">
+          <div class="product-price">5 200 €</div>
+          <div class="product-price-note">Prix TTC · Livraison assurée incluse</div>
+          <div style="display:flex;align-items:center;gap:1rem;margin-top:0.8rem;">
+            <span style="padding:0.3rem 0.8rem;background:#d4edda;color:#155724;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;">ORIGINAL UNIQUE</span>
+            <span style="font-size:0.75rem;color:var(--color-gray-400);">Œuvre vendue avec son certificat</span>
+          </div>
+        </div>
+
+        <!-- Meta -->
+        <div class="product-meta">
+          <div class="product-meta-item">
+            <div class="product-meta-label">Technique</div>
+            <div class="product-meta-value">Huile sur toile</div>
+          </div>
+          <div class="product-meta-item">
+            <div class="product-meta-label">Dimensions</div>
+            <div class="product-meta-value">120 × 150 cm</div>
+          </div>
+          <div class="product-meta-item">
+            <div class="product-meta-label">Année</div>
+            <div class="product-meta-value">2022</div>
+          </div>
+          <div class="product-meta-item">
+            <div class="product-meta-label">Style</div>
+            <div class="product-meta-value">Expressionnisme</div>
+          </div>
+          <div class="product-meta-item">
+            <div class="product-meta-label">Support</div>
+            <div class="product-meta-value">Toile tendue</div>
+          </div>
+          <div class="product-meta-item">
+            <div class="product-meta-label">Disponibilité</div>
+            <div class="product-meta-value" style="color:#27ae60;font-weight:600;">✓ En stock</div>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <p class="product-description">
+          « Danse des Flammes » est une œuvre magistrale qui capture l'essence du mouvement et de la passion. Élise Morel a créé cette pièce unique lors de sa résidence artistique en Provence, laissant les tons de braise et d'ambre dialoguer dans une composition à la fois sauvage et maîtrisée.
+          <br /><br />
+          Cette toile de grand format s'impose comme une pièce maîtresse dans tout intérieur contemporain. La technique expressionniste d'Élise, développée sur plus de vingt ans de pratique, confère à cette œuvre une présence et une profondeur exceptionnelles.
+        </p>
+
+        <!-- Actions -->
+        <div class="product-actions">
+          <button class="btn-cart" onclick="addToCart(5);showToast('🛒 Ajouté au panier');">
+            🛒 Ajouter au panier
+          </button>
+          <button class="btn-buy" onclick="location.href='checkout.html'">
+            Acheter maintenant
+          </button>
+          <button class="btn-wishlist-lg" data-wishlist-id="5" onclick="toggleWishlist(5)" title="Favoris">♡</button>
+        </div>
+
+        <!-- Share -->
+        <div class="product-share">
+          <span>Partager :</span>
+          <div class="share-icon" title="Facebook">📘</div>
+          <div class="share-icon" title="Instagram">📷</div>
+          <div class="share-icon" title="Pinterest">📌</div>
+          <div class="share-icon" title="Twitter">🐦</div>
+          <div class="share-icon" title="Copier le lien">🔗</div>
+        </div>
+
+        <!-- Artist mini card -->
+        <a href="artist-profile.html" class="artist-card-mini">
+          <div class="artist-mini-avatar">👩‍🎨</div>
+          <div>
+            <div class="artist-mini-name">Élise Morel</div>
+            <div class="artist-specialty" style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;">Peinture Classique · Paris</div>
+            <div class="artist-mini-stats">24 œuvres · 4.9 ★ · 340 abonnés</div>
+          </div>
+          <div style="margin-left:auto;font-size:0.75rem;color:var(--color-gold);">Voir le profil →</div>
+        </a>
+
+        <!-- Services -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem;">
+          <div style="padding:1rem;border:1px solid var(--color-gray-200);text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:0.5rem;">🚚</div>
+            <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Livraison assurée</div>
+            <div style="font-size:0.75rem;color:var(--color-gray-400);margin-top:0.2rem;">5–10 jours ouvrés</div>
+          </div>
+          <div style="padding:1rem;border:1px solid var(--color-gray-200);text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:0.5rem;">↩️</div>
+            <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Retour 14 jours</div>
+            <div style="font-size:0.75rem;color:var(--color-gray-400);margin-top:0.2rem;">Satisfaction garantie</div>
+          </div>
+          <div style="padding:1rem;border:1px solid var(--color-gray-200);text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:0.5rem;">📜</div>
+            <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Certificat inclus</div>
+            <div style="font-size:0.75rem;color:var(--color-gray-400);margin-top:0.2rem;">Authenticité garantie</div>
+          </div>
+          <div style="padding:1rem;border:1px solid var(--color-gray-200);text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:0.5rem;">💳</div>
+            <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">Paiement sécurisé</div>
+            <div style="font-size:0.75rem;color:var(--color-gray-400);margin-top:0.2rem;">CB, PayPal, Mobile</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div style="margin-top:5rem;">
+      <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Avis clients (42)</h2>
+
+      <div style="display:flex;align-items:center;gap:3rem;padding:2rem;background:var(--color-gray-100);margin-bottom:2rem;">
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-serif);font-size:4rem;color:var(--color-gold);">4.9</div>
+          <div style="color:var(--color-gold);font-size:1.5rem;">★★★★★</div>
+          <div style="font-size:0.8rem;color:var(--color-gray-400);margin-top:0.3rem;">42 avis</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:0.5rem;">
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-size:0.8rem;width:2rem;">5★</span>
+            <div style="flex:1;height:6px;background:var(--color-gray-200);border-radius:3px;overflow:hidden;"><div style="width:85%;height:100%;background:var(--color-gold);"></div></div>
+            <span style="font-size:0.8rem;color:var(--color-gray-400);">36</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-size:0.8rem;width:2rem;">4★</span>
+            <div style="flex:1;height:6px;background:var(--color-gray-200);border-radius:3px;overflow:hidden;"><div style="width:12%;height:100%;background:var(--color-gold);"></div></div>
+            <span style="font-size:0.8rem;color:var(--color-gray-400);">5</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <span style="font-size:0.8rem;width:2rem;">3★</span>
+            <div style="flex:1;height:6px;background:var(--color-gray-200);border-radius:3px;overflow:hidden;"><div style="width:2%;height:100%;background:var(--color-gold);"></div></div>
+            <span style="font-size:0.8rem;color:var(--color-gray-400);">1</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reviews list -->
+      <div style="display:flex;flex-direction:column;gap:2rem;">
+        <div style="padding-bottom:2rem;border-bottom:1px solid var(--color-gray-200);">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem;">
+            <div style="width:3rem;height:3rem;border-radius:50%;background:var(--color-gray-200);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">👩</div>
+            <div>
+              <div style="font-weight:600;">Camille R.</div>
+              <div style="font-size:0.75rem;color:var(--color-gray-400);">Paris · Il y a 2 mois</div>
+            </div>
+            <div style="margin-left:auto;color:var(--color-gold);">★★★★★</div>
+          </div>
+          <p style="color:var(--color-gray-600);line-height:1.7;font-style:italic;">« Absolument magnifique ! Cette œuvre a complètement transformé mon salon. Les couleurs sont encore plus intenses en vrai, et la qualité de la toile est exceptionnelle. Je recommande à 100%. »</p>
+        </div>
+
+        <div style="padding-bottom:2rem;border-bottom:1px solid var(--color-gray-200);">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.8rem;">
+            <div style="width:3rem;height:3rem;border-radius:50%;background:var(--color-gray-200);display:flex;align-items:center;justify-content:center;font-size:1.3rem;">👨</div>
+            <div>
+              <div style="font-weight:600;">Thomas M.</div>
+              <div style="font-size:0.75rem;color:var(--color-gray-400);">Lyon · Il y a 4 mois</div>
+            </div>
+            <div style="margin-left:auto;color:var(--color-gold);">★★★★★</div>
+          </div>
+          <p style="color:var(--color-gray-600);line-height:1.7;font-style:italic;">« Élise Morel est une artiste exceptionnelle. La livraison était parfaite, l'emballage professionnel. La pièce est arrivée accompagnée de son certificat et d'une note personnelle de l'artiste. »</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Similar Works -->
+    <div style="margin-top:5rem;">
+      <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:0.5rem;">Œuvres similaires</h2>
+      <p style="color:var(--color-gray-500);margin-bottom:2rem;">Recommandations basées sur votre navigation</p>
+      <div class="artwork-grid" id="similar-grid"></div>
+    </div>
+  </div>
+</main>
+
+<!-- CART -->
+<div class="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Mon Panier</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal"><span>Total</span><span id="cart-total">0 €</span></div>
+    <button class="cart-checkout-btn" onclick="location.href='checkout.html'">Commander</button>
+  </div>
+</aside>
+
+<!-- CHAT -->
+<div class="chat-widget">
+  <div class="chat-box" id="chat-box">
+    <div class="chat-box-header">
+      <div class="chat-status-dot"></div>
+      <div><div style="font-weight:600;font-size:0.9rem;">Support ArtaNova</div></div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Bonjour ! Des questions sur cette œuvre ? 🎨</div>
+    </div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chat-input" type="text" placeholder="Votre message…" />
+      <button class="chat-send" id="chat-send">→</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle">💬</button>
+</div>
+
+<div class="toast-container"></div>
+
+<script src="../js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('similar-grid');
+    if (grid) {
+      grid.innerHTML = artworks.filter(a => a.id !== 5).slice(0, 4).map(a => renderArtworkCard(a)).join('');
+      initWishlistButtons();
+    }
+    initProductThumbs();
+  });
+</script>
+</body>
+</html>

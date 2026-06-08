@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Élise Morel – Artiste · ArtaNova</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav scrolled" id="main-nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">Arta<span>Nova</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="gallery.html">Galerie</a></li>
+      <li><a href="artists.html" class="active">Artistes</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Thème"></button>
+      <button class="nav-icon-btn" onclick="openCart()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ARTIST HERO -->
+<div class="artist-hero">
+  <div class="container">
+    <div class="artist-hero-inner">
+      <div class="artist-profile-avatar">👩‍🎨</div>
+      <div>
+        <div class="label text-gold" style="margin-bottom:0.8rem;">Artiste vedette · France 🇫🇷</div>
+        <h1 class="artist-profile-name">Élise Morel</h1>
+        <div class="artist-profile-specialty">Peinture Classique · Expressionnisme · Huile sur toile</div>
+        <p style="color:var(--color-gray-400);max-width:55ch;line-height:1.7;margin-top:1rem;">
+          Née à Paris en 1978, Élise Morel est l'une des artistes françaises contemporaines les plus influentes de sa génération. Formée aux Beaux-Arts de Paris, elle développe depuis vingt ans un langage pictural personnel, à la croisée de la tradition classique et de l'expressionnisme moderne.
+        </p>
+        <div class="artist-social">
+          <a href="#" class="social-link" title="Instagram">📷</a>
+          <a href="#" class="social-link" title="Facebook">📘</a>
+          <a href="#" class="social-link" title="Twitter">🐦</a>
+          <a href="#" class="social-link" title="Site web">🌐</a>
+        </div>
+        <div class="artist-stats-bar">
+          <div class="artist-stat-item">
+            <div class="artist-stat-number">24</div>
+            <div class="artist-stat-label">Œuvres</div>
+          </div>
+          <div class="artist-stat-item">
+            <div class="artist-stat-number">340</div>
+            <div class="artist-stat-label">Abonnés</div>
+          </div>
+          <div class="artist-stat-item">
+            <div class="artist-stat-number">148</div>
+            <div class="artist-stat-label">Ventes</div>
+          </div>
+          <div class="artist-stat-item">
+            <div class="artist-stat-number">4.9★</div>
+            <div class="artist-stat-label">Note</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;margin-top:2rem;">
+          <button class="btn btn-primary" onclick="showToast('✓ Vous suivez maintenant Élise Morel')">Suivre l'artiste</button>
+          <button class="btn btn-outline" style="color:white;border-color:rgba(255,255,255,0.4);">Contacter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="section">
+  <div class="container">
+
+    <!-- Tabs -->
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--color-gray-200);margin-bottom:3rem;">
+      <button class="artist-tab active" data-tab="portfolio" onclick="switchTab(this,'portfolio')" style="padding:1rem 2rem;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid var(--color-gold);cursor:pointer;color:var(--color-black);">Portfolio</button>
+      <button class="artist-tab" data-tab="bio" onclick="switchTab(this,'bio')" style="padding:1rem 2rem;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--color-gray-400);">Biographie</button>
+      <button class="artist-tab" data-tab="contact" onclick="switchTab(this,'contact')" style="padding:1rem 2rem;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;color:var(--color-gray-400);">Contact</button>
+    </div>
+
+    <!-- Portfolio Tab -->
+    <div id="tab-portfolio">
+      <div class="section-header flex-between">
+        <h2 class="section-title">Œuvres disponibles (24)</h2>
+        <select class="sort-select" style="width:auto;" onchange="applyFilters()">
+          <option>Plus récentes</option>
+          <option>Prix croissant</option>
+          <option>Prix décroissant</option>
+          <option>Mieux notées</option>
+        </select>
+      </div>
+      <div class="artwork-grid" id="artist-grid"></div>
+    </div>
+
+    <!-- Bio Tab -->
+    <div id="tab-bio" style="display:none;">
+      <div style="max-width:800px;">
+        <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:1.5rem;">À propos d'Élise Morel</h2>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;">
+          <div>
+            <p style="color:var(--color-gray-600);line-height:1.9;margin-bottom:1.5rem;">
+              Née à Paris en 1978, Élise Morel grandit dans un environnement artistique riche, fille d'un galeriste et d'une écrivaine. Elle intègre l'École Nationale Supérieure des Beaux-Arts de Paris à 19 ans, où elle se spécialise en peinture classique.
+            </p>
+            <p style="color:var(--color-gray-600);line-height:1.9;margin-bottom:1.5rem;">
+              Après plusieurs années de résidences artistiques en Italie, Espagne et au Japon, Élise développe un style unique qui mêle la rigueur technique classique à l'expressivité contemporaine.
+            </p>
+            <p style="color:var(--color-gray-600);line-height:1.9;">
+              Ses œuvres sont exposées dans de nombreuses galeries à Paris, New York, Dubai et Tokyo. Elle collabore régulièrement avec des hôtels de luxe et des collectionneurs privés internationaux.
+            </p>
+          </div>
+          <div>
+            <h3 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1rem;">Expositions</h3>
+            <div style="display:flex;flex-direction:column;gap:0.8rem;">
+              <div style="padding:1rem;background:var(--color-gray-100);">
+                <div style="font-weight:600;font-size:0.9rem;">Galerie Perrotin, Paris</div>
+                <div style="font-size:0.8rem;color:var(--color-gray-400);">2024 · Solo show · «Feu & Lumière»</div>
+              </div>
+              <div style="padding:1rem;background:var(--color-gray-100);">
+                <div style="font-weight:600;font-size:0.9rem;">Art Basel Miami Beach</div>
+                <div style="font-size:0.8rem;color:var(--color-gray-400);">2023 · Groupe · Booth Contemporain</div>
+              </div>
+              <div style="padding:1rem;background:var(--color-gray-100);">
+                <div style="font-weight:600;font-size:0.9rem;">Tokyo Art Fair</div>
+                <div style="font-size:0.8rem;color:var(--color-gray-400);">2022 · Groupe · French Contemporary</div>
+              </div>
+              <div style="padding:1rem;background:var(--color-gray-100);">
+                <div style="font-weight:600;font-size:0.9rem;">Centre Pompidou</div>
+                <div style="font-size:0.8rem;color:var(--color-gray-400);">2021 · Collection permanente</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:1rem;">Distinctions</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:0.8rem;">
+          <span style="padding:0.5rem 1rem;border:1px solid var(--color-gold);color:var(--color-gold);font-size:0.8rem;">🏆 Prix de la Jeune Création 2008</span>
+          <span style="padding:0.5rem 1rem;border:1px solid var(--color-gold);color:var(--color-gold);font-size:0.8rem;">🥇 Bourse Villa Médicis 2012</span>
+          <span style="padding:0.5rem 1rem;border:1px solid var(--color-gold);color:var(--color-gold);font-size:0.8rem;">🎖️ Chevalier des Arts 2019</span>
+          <span style="padding:0.5rem 1rem;border:1px solid var(--color-gold);color:var(--color-gold);font-size:0.8rem;">🌟 Artiste de l'Année ArtaNova 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Tab -->
+    <div id="tab-contact" style="display:none;">
+      <div style="max-width:600px;">
+        <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:0.5rem;">Contacter Élise Morel</h2>
+        <p style="color:var(--color-gray-500);margin-bottom:2rem;">Vous pouvez contacter l'artiste pour des commissions privées, des collaborations ou des questions sur ses œuvres.</p>
+
+        <form onsubmit="event.preventDefault();showToast('✉️ Message envoyé à Élise Morel');" style="display:flex;flex-direction:column;gap:1.2rem;">
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Votre nom</label>
+            <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);background:var(--color-white);color:var(--color-black);font-size:0.9rem;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='var(--color-gold)'" onblur="this.style.borderColor='var(--color-gray-200)'" />
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Email</label>
+            <input type="email" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);background:var(--color-white);color:var(--color-black);font-size:0.9rem;outline:none;" onfocus="this.style.borderColor='var(--color-gold)'" onblur="this.style.borderColor='var(--color-gray-200)'" />
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Sujet</label>
+            <select style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);background:var(--color-white);color:var(--color-black);font-size:0.9rem;outline:none;appearance:none;">
+              <option>Commission privée</option>
+              <option>Question sur une œuvre</option>
+              <option>Collaboration professionnelle</option>
+              <option>Exposition / Galerie</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.5rem;">Message</label>
+            <textarea rows="6" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);background:var(--color-white);color:var(--color-black);font-size:0.9rem;outline:none;resize:vertical;font-family:inherit;" onfocus="this.style.borderColor='var(--color-gold)'" onblur="this.style.borderColor='var(--color-gray-200)'"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- CART -->
+<div class="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h2 class="cart-title">Mon Panier</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-list"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal"><span>Total</span><span id="cart-total">0 €</span></div>
+    <button class="cart-checkout-btn" onclick="location.href='checkout.html'">Commander</button>
+  </div>
+</aside>
+
+<!-- CHAT -->
+<div class="chat-widget">
+  <div class="chat-box" id="chat-box">
+    <div class="chat-box-header"><div class="chat-status-dot"></div><div><div style="font-weight:600;font-size:0.9rem;">Support ArtaNova</div></div></div>
+    <div class="chat-messages" id="chat-messages"><div class="chat-msg bot">Bonjour ! 👋</div></div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chat-input" type="text" placeholder="Votre message…" />
+      <button class="chat-send" id="chat-send">→</button>
+    </div>
+  </div>
+  <button class="chat-toggle" id="chat-toggle">💬</button>
+</div>
+
+<div class="toast-container"></div>
+
+<script src="../js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('artist-grid');
+    if (grid) {
+      // Show artworks by Élise Morel
+      const herWorks = artworks.filter(a => a.artist === 'Élise Morel');
+      const others = artworks.filter(a => a.artist !== 'Élise Morel').slice(0, 6 - herWorks.length);
+      grid.innerHTML = [...herWorks, ...others].map(a => renderArtworkCard(a)).join('');
+      initWishlistButtons();
+    }
+  });
+
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.artist-tab').forEach(t => {
+      t.style.borderBottomColor = 'transparent';
+      t.style.color = 'var(--color-gray-400)';
+    });
+    btn.style.borderBottomColor = 'var(--color-gold)';
+    btn.style.color = 'var(--color-black)';
+
+    ['portfolio', 'bio', 'contact'].forEach(id => {
+      const el = document.getElementById('tab-' + id);
+      if (el) el.style.display = id === tabId ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

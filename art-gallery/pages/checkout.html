@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement sécurisé – ArtaNova</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<!-- NAV minimal -->
+<nav class="nav scrolled">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">Arta<span>Nova</span></a>
+    <div style="display:flex;align-items:center;gap:1rem;font-size:0.8rem;color:var(--color-gray-400);">
+      <span>🔒 Paiement 100% sécurisé</span>
+    </div>
+  </div>
+</nav>
+
+<main style="padding-top:5rem;padding-bottom:5rem;background:var(--color-gray-100);min-height:100vh;">
+  <div class="container">
+
+    <!-- Progress -->
+    <div style="display:flex;align-items:center;gap:0;margin-bottom:3rem;max-width:600px;margin-left:auto;margin-right:auto;">
+      <div style="flex:1;text-align:center;">
+        <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-gold);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 0.5rem;">1</div>
+        <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gold);font-weight:700;">Panier</div>
+      </div>
+      <div style="flex:1;height:2px;background:var(--color-gold);"></div>
+      <div style="flex:1;text-align:center;">
+        <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-gold);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 0.5rem;">2</div>
+        <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gold);font-weight:700;">Livraison</div>
+      </div>
+      <div style="flex:1;height:2px;background:var(--color-gray-300);"></div>
+      <div style="flex:1;text-align:center;">
+        <div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--color-gray-300);color:var(--color-gray-500);display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 0.5rem;">3</div>
+        <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-400);">Paiement</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:start;">
+
+      <!-- Form -->
+      <div>
+        <!-- Delivery info -->
+        <div style="background:var(--color-white);padding:2rem;margin-bottom:1.5rem;">
+          <h2 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-gray-100);">Informations de livraison</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div>
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Prénom *</label>
+              <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" onfocus="this.style.borderColor='var(--color-gold)'" onblur="this.style.borderColor='var(--color-gray-200)'" />
+            </div>
+            <div>
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Nom *</label>
+              <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Email *</label>
+              <input type="email" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Adresse *</label>
+              <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            </div>
+            <div>
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Code postal *</label>
+              <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            </div>
+            <div>
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Ville *</label>
+              <input type="text" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Pays *</label>
+              <select style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);appearance:none;">
+                <option>France</option>
+                <option>Belgique</option>
+                <option>Suisse</option>
+                <option>Luxembourg</option>
+                <option>Maroc</option>
+                <option>Tunisie</option>
+                <option>Algérie</option>
+                <option>Sénégal</option>
+                <option>Canada</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Shipping options -->
+          <div style="margin-top:2rem;">
+            <h3 style="font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">Mode de livraison</h3>
+            <div style="display:flex;flex-direction:column;gap:0.8rem;">
+              <label style="display:flex;align-items:center;gap:1rem;padding:1rem;border:2px solid var(--color-gold);cursor:pointer;">
+                <input type="radio" name="shipping" checked style="accent-color:var(--color-gold);" />
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:0.9rem;">Livraison assurée spécialisée</div>
+                  <div style="font-size:0.75rem;color:var(--color-gray-400);">5–10 jours ouvrés · Emballage professionnel</div>
+                </div>
+                <div style="font-weight:700;color:var(--color-gold);">Gratuit</div>
+              </label>
+              <label style="display:flex;align-items:center;gap:1rem;padding:1rem;border:1px solid var(--color-gray-200);cursor:pointer;">
+                <input type="radio" name="shipping" style="accent-color:var(--color-gold);" />
+                <div style="flex:1;">
+                  <div style="font-weight:600;font-size:0.9rem;">Express prioritaire</div>
+                  <div style="font-size:0.75rem;color:var(--color-gray-400);">2–3 jours ouvrés</div>
+                </div>
+                <div style="font-weight:700;">85 €</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div style="background:var(--color-white);padding:2rem;">
+          <h2 style="font-family:var(--font-serif);font-size:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-gray-100);">Mode de paiement</h2>
+
+          <!-- Payment methods -->
+          <div style="display:flex;gap:0.8rem;margin-bottom:2rem;flex-wrap:wrap;">
+            <button class="payment-method-btn active" onclick="selectPayment(this,'card')" style="padding:0.8rem 1.5rem;border:2px solid var(--color-gold);background:transparent;cursor:pointer;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;transition:all 0.3s;">💳 Carte bancaire</button>
+            <button class="payment-method-btn" onclick="selectPayment(this,'paypal')" style="padding:0.8rem 1.5rem;border:1px solid var(--color-gray-200);background:transparent;cursor:pointer;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;transition:all 0.3s;">🅿️ PayPal</button>
+            <button class="payment-method-btn" onclick="selectPayment(this,'mobile')" style="padding:0.8rem 1.5rem;border:1px solid var(--color-gray-200);background:transparent;cursor:pointer;font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;transition:all 0.3s;">📱 Mobile Money</button>
+          </div>
+
+          <!-- Card form -->
+          <div id="card-form">
+            <div style="margin-bottom:1rem;">
+              <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Numéro de carte *</label>
+              <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCard(this)" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:1rem;outline:none;background:var(--color-white);color:var(--color-black);letter-spacing:0.1em;" />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
+              <div>
+                <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Expiration *</label>
+                <input type="text" placeholder="MM/AA" maxlength="5" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+              </div>
+              <div>
+                <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">CVV *</label>
+                <input type="text" placeholder="***" maxlength="4" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+              </div>
+              <div>
+                <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:block;margin-bottom:0.4rem;">Titulaire *</label>
+                <input type="text" placeholder="Nom sur la carte" style="width:100%;padding:0.8rem;border:1px solid var(--color-gray-200);font-size:0.9rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Security badges -->
+          <div style="display:flex;align-items:center;gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--color-gray-100);">
+            <span style="font-size:1.5rem;">🔒</span>
+            <p style="font-size:0.75rem;color:var(--color-gray-400);">Paiement sécurisé par cryptage SSL 256 bits. Vos données sont protégées.</p>
+            <div style="display:flex;gap:0.5rem;margin-left:auto;">
+              <span style="padding:0.3rem 0.5rem;border:1px solid var(--color-gray-200);font-size:0.7rem;font-weight:700;">VISA</span>
+              <span style="padding:0.3rem 0.5rem;border:1px solid var(--color-gray-200);font-size:0.7rem;font-weight:700;">MC</span>
+              <span style="padding:0.3rem 0.5rem;border:1px solid var(--color-gray-200);font-size:0.7rem;font-weight:700;">AMEX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div style="background:var(--color-white);padding:2rem;position:sticky;top:5rem;">
+        <h2 style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--color-gray-100);">Récapitulatif</h2>
+
+        <div id="checkout-items">
+          <!-- Dynamic -->
+          <div style="display:grid;grid-template-columns:4rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--color-gray-100);">
+            <div style="background:linear-gradient(135deg,#1a0e05,#4a2c15);display:flex;align-items:center;justify-content:center;font-size:2rem;aspect-ratio:3/4;">🔥</div>
+            <div>
+              <div style="font-family:var(--font-serif);font-size:0.95rem;margin-bottom:0.2rem;">Danse des Flammes</div>
+              <div style="font-size:0.75rem;color:var(--color-gold);">Élise Morel</div>
+              <div style="font-size:0.75rem;color:var(--color-gray-400);">120×150 cm · Huile sur toile</div>
+              <div style="font-family:var(--font-serif);font-size:1.1rem;margin-top:0.5rem;">5 200 €</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Promo code -->
+        <div style="margin:1.5rem 0;padding:1rem 0;border-bottom:1px solid var(--color-gray-100);">
+          <div style="display:flex;gap:0.5rem;">
+            <input type="text" placeholder="Code promo" style="flex:1;padding:0.6rem 0.8rem;border:1px solid var(--color-gray-200);font-size:0.8rem;outline:none;background:var(--color-white);color:var(--color-black);" />
+            <button style="padding:0.6rem 1rem;background:var(--color-black);color:white;border:none;font-size:0.75rem;font-weight:600;cursor:pointer;" onclick="showToast('✓ Code appliqué : -10%')">Appliquer</button>
+          </div>
+        </div>
+
+        <!-- Totals -->
+        <div style="display:flex;flex-direction:column;gap:0.6rem;font-size:0.9rem;margin-bottom:1.5rem;">
+          <div style="display:flex;justify-content:space-between;">
+            <span style="color:var(--color-gray-500);">Sous-total</span>
+            <span>5 200 €</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;">
+            <span style="color:var(--color-gray-500);">Livraison</span>
+            <span style="color:#27ae60;">Gratuite</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;">
+            <span style="color:var(--color-gray-500);">TVA (20%)</span>
+            <span>1 040 €</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:var(--font-serif);font-size:1.3rem;padding-top:0.8rem;border-top:1px solid var(--color-gray-100);">
+            <span>Total</span>
+            <span>6 240 €</span>
+          </div>
+        </div>
+
+        <button class="cart-checkout-btn" onclick="handleCheckout()">
+          🔒 Confirmer le paiement — 6 240 €
+        </button>
+
+        <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.5rem;">
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:var(--color-gray-400);">🔒 SSL</div>
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:var(--color-gray-400);">↩️ Retour 14j</div>
+          <div style="display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:var(--color-gray-400);">📜 Certificat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast-container"></div>
+
+<script src="../js/app.js"></script>
+<script>
+  function formatCard(input) {
+    let val = input.value.replace(/\D/g, '').slice(0, 16);
+    input.value = val.match(/.{1,4}/g)?.join(' ') || val;
+  }
+
+  function selectPayment(btn, method) {
+    document.querySelectorAll('.payment-method-btn').forEach(b => {
+      b.style.border = '1px solid var(--color-gray-200)';
+    });
+    btn.style.border = '2px solid var(--color-gold)';
+  }
+
+  function handleCheckout() {
+    const btn = document.querySelector('.cart-checkout-btn');
+    btn.textContent = '⏳ Traitement en cours…';
+    btn.disabled = true;
+    setTimeout(() => {
+      showToast('🎉 Commande confirmée ! Merci pour votre achat.');
+      btn.textContent = '✓ Commande confirmée !';
+      btn.style.background = '#27ae60';
+    }, 2000);
+  }
+</script>
+</body>
+</html>

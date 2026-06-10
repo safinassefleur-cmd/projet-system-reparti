@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion Admin – ArtaNova</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+
+<div class="cursor"><div class="cursor-dot"></div></div>
+<div class="cursor-ring"></div>
+
+<div style="min-height:100vh;display:grid;grid-template-columns:1fr 1fr;">
+
+  <!-- Left — image -->
+  <div style="position:relative;overflow:hidden;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg"
+      alt="" style="width:100%;height:100%;object-fit:cover;min-height:100vh;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,var(--color-white) 100%);"></div>
+    <div style="position:absolute;top:2rem;left:2rem;">
+      <a href="../index.html" style="font-family:var(--font-serif);font-size:1.6rem;color:white;text-decoration:none;">Arta<span style="color:var(--color-gold);">Nova</span></a>
+    </div>
+    <div style="position:absolute;bottom:3rem;left:3rem;right:40%;">
+      <p style="font-family:var(--font-serif);font-size:1.4rem;color:white;font-style:italic;line-height:1.5;opacity:0.9;">
+        "L'art est la signature de la civilisation."
+      </p>
+      <div style="color:var(--color-gold);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;margin-top:0.8rem;">— Safinase</div>
+    </div>
+  </div>
+
+  <!-- Right — form -->
+  <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:3rem;background:var(--color-white);">
+    <div style="width:100%;max-width:400px;">
+
+      <div style="margin-bottom:2.5rem;">
+        <div class="label text-gold" style="margin-bottom:0.8rem;">Espace privé</div>
+        <h1 style="font-family:var(--font-serif);font-size:2.5rem;letter-spacing:-0.02em;margin-bottom:0.5rem;">Connexion Admin</h1>
+        <p style="color:var(--color-gray-500);font-size:0.9rem;">Accès réservé à Safinase pour gérer ses œuvres.</p>
+      </div>
+
+      <div id="login-error" style="display:none;background:rgba(230,57,70,0.12);border:1px solid #e63946;color:#e63946;padding:0.8rem 1rem;border-radius:0.4rem;font-size:0.85rem;margin-bottom:1.5rem;">
+        ✕ Mot de passe incorrect. Réessayez.
+      </div>
+
+      <form id="login-form" style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.5rem;color:var(--color-gray-500);">Identifiant</label>
+          <input id="login-user" type="text" value="safinase" readonly
+            style="width:100%;padding:0.9rem 1rem;border:1px solid var(--color-gray-200);border-radius:0.4rem;font-size:0.95rem;background:var(--color-gray-100);color:var(--color-gray-500);font-family:inherit;">
+        </div>
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;display:block;margin-bottom:0.5rem;color:var(--color-gray-500);">Mot de passe</label>
+          <div style="position:relative;">
+            <input id="login-pass" type="password" placeholder="••••••••" autofocus
+              style="width:100%;padding:0.9rem 3rem 0.9rem 1rem;border:1px solid var(--color-gray-200);border-radius:0.4rem;font-size:0.95rem;background:var(--color-white);color:var(--color-black);font-family:inherit;outline:none;transition:border-color 0.3s;"
+              onfocus="this.style.borderColor='var(--color-gold)'" onblur="this.style.borderColor='var(--color-gray-200)'">
+            <button type="button" onclick="togglePass()" tabindex="-1"
+              style="position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--color-gray-400);cursor:pointer;font-size:1rem;padding:0.2rem;">
+              <svg id="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit"
+          style="width:100%;padding:1rem;background:var(--gradient-main);color:#fff;border:none;border-radius:0.4rem;font-size:0.9rem;font-weight:600;letter-spacing:0.08em;cursor:pointer;transition:opacity 0.2s;margin-top:0.5rem;"
+          onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+          Se connecter
+        </button>
+      </form>
+
+      <div style="margin-top:2rem;text-align:center;">
+        <a href="../index.html" style="color:var(--color-gray-400);font-size:0.85rem;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='var(--color-gray-400)'">
+          ← Retour au site
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="toasts"></div>
+<script src="../js/app.js"></script>
+<script>
+  // Redirect if already logged in
+  if (sessionStorage.getItem('artanova_admin') === 'true') {
+    location.href = '../index.html';
+  }
+
+  function togglePass() {
+    const p = document.getElementById('login-pass');
+    p.type = p.type === 'password' ? 'text' : 'password';
+  }
+
+  document.getElementById('login-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const pass = document.getElementById('login-pass').value;
+    if (adminLogin(pass)) {
+      showToast('✓ Connexion réussie !');
+      setTimeout(() => { location.href = '../index.html'; }, 800);
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+      document.getElementById('login-pass').value = '';
+      document.getElementById('login-pass').focus();
+      document.getElementById('login-pass').style.borderColor = '#e63946';
+    }
+  });
+</script>
+</body>
+</html>

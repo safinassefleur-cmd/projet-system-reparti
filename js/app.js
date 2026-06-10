@@ -7,10 +7,248 @@ const state = {
   cart: JSON.parse(localStorage.getItem('artanova_cart') || '[]'),
   wishlist: JSON.parse(localStorage.getItem('artanova_wishlist') || '[]'),
   customImages: JSON.parse(localStorage.getItem('artanova_custom_images') || '{}'),
+  customArtworks: JSON.parse(localStorage.getItem('artanova_custom_artworks') || 'null'),
   theme: localStorage.getItem('artanova_theme') || 'light',
   lang: localStorage.getItem('artanova_lang') || 'fr',
   heroSlide: 0,
 };
+
+// ─── Admin Auth ───────────────────────────────
+const ADMIN_PASS_HASH = '7a3f9b2e1c4d6f8a0b5c7e9d2f4a6b8c'; // simple token
+
+function adminLogin(password) {
+  // Simple password check — "safinase2024"
+  if (password === 'safinase2024') {
+    sessionStorage.setItem('artanova_admin', 'true');
+    return true;
+  }
+  return false;
+}
+
+function adminLogout() {
+  sessionStorage.removeItem('artanova_admin');
+  location.reload();
+}
+
+function isAdmin() {
+  return sessionStorage.getItem('artanova_admin') === 'true';
+}
+
+function initAdminBar() {
+  if (!isAdmin()) return;
+  const bar = document.createElement('div');
+  bar.id = 'admin-bar';
+  bar.innerHTML = `
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <span style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;opacity:0.7;">Mode Admin</span>
+      <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;display:inline-block;animation:pulse 2s infinite;"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.8rem;">
+      <button onclick="openAddArtworkModal()" style="padding:0.4rem 1rem;background:var(--gradient-main);color:white;border:none;border-radius:2rem;font-size:0.75rem;font-weight:600;cursor:pointer;letter-spacing:0.05em;">+ Ajouter une œuvre</button>
+      <button onclick="adminLogout()" style="padding:0.4rem 1rem;background:rgba(230,57,70,0.15);color:#e63946;border:1px solid rgba(230,57,70,0.3);border-radius:2rem;font-size:0.75rem;cursor:pointer;">Déconnexion</button>
+    </div>`;
+  bar.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:2000;background:rgba(8,5,15,0.95);backdrop-filter:blur(10px);padding:0.6rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--color-violet);';
+  document.body.prepend(bar);
+  // Push nav down
+  const nav = document.querySelector('.nav');
+  if (nav) nav.style.top = '40px';
+  document.body.style.paddingTop = '0';
+}
+
+// ─── Artworks (with custom overrides) ─────────
+function getArtworks() {
+  return state.customArtworks || artworks;
+}
+
+function saveArtworks(arr) {
+  state.customArtworks = arr;
+  localStorage.setItem('artanova_custom_artworks', JSON.stringify(arr));
+}
+
+function deleteArtwork(id) {
+  if (!confirm('Supprimer cette œuvre définitivement ?')) return;
+  const arr = getArtworks().filter(a => a.id !== id);
+  saveArtworks(arr);
+  refreshGrids();
+  showToast('🗑 Œuvre supprimée');
+}
+
+function refreshGrids() {
+  const grids = ['home-artwork-grid','artwork-grid','about-artwork-grid','similar-grid','artist-grid'];
+  grids.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const works = id === 'similar-grid'
+      ? getArtworks().filter(a => a.id !== state._currentProductId).slice(0,4)
+      : getArtworks();
+    el.innerHTML = works.map(a => renderArtworkCard(a)).join('');
+  });
+  initWishlistButtons();
+}
+
+// ─── Add Artwork Modal ────────────────────────
+function openAddArtworkModal() {
+  openArtworkFormModal(null);
+}
+
+function openEditArtworkModal(id) {
+  const artwork = getArtworks().find(a => a.id === id);
+  if (!artwork) return;
+  openArtworkFormModal(artwork);
+}
+
+function openArtworkFormModal(artwork) {
+  const existing = document.getElementById('artwork-form-overlay');
+  if (existing) existing.remove();
+  const isEdit = !!artwork;
+  const overlay = document.createElement('div');
+  overlay.id = 'artwork-form-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);overflow-y:auto;padding:2rem;';
+  overlay.innerHTML = `
+    <div style="background:var(--color-white);color:var(--color-black);border-radius:1rem;padding:2.5rem;max-width:600px;width:100%;box-shadow:0 40px 100px rgba(0,0,0,0.5);position:relative;margin:auto;">
+      <button onclick="document.getElementById('artwork-form-overlay').remove()" style="position:absolute;top:1rem;right:1rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--color-gray-500);">✕</button>
+      <h2 style="font-family:var(--font-serif);font-size:1.8rem;margin-bottom:0.3rem;">${isEdit ? 'Modifier l\'œuvre' : 'Ajouter une œuvre'}</h2>
+      <p style="color:var(--color-gray-500);font-size:0.85rem;margin-bottom:2rem;">${isEdit ? artwork.title : 'Nouveau tableau dans votre galerie'}</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div style="grid-column:span 2;">
+          <label class="form-label">Titre de l'œuvre *</label>
+          <input id="af-title" type="text" value="${artwork?.title || ''}" placeholder="ex: Lumière d'Été" class="form-input">
+        </div>
+        <div style="grid-column:span 2;">
+          <label class="form-label">Description</label>
+          <textarea id="af-desc" rows="3" placeholder="Décrivez l'œuvre…" class="form-input" style="resize:vertical;">${artwork?.description || ''}</textarea>
+        </div>
+        <div>
+          <label class="form-label">Prix (€) *</label>
+          <input id="af-price" type="number" value="${artwork?.price || ''}" placeholder="ex: 1200" class="form-input">
+        </div>
+        <div>
+          <label class="form-label">Prix barré (€)</label>
+          <input id="af-original-price" type="number" value="${artwork?.originalPrice || ''}" placeholder="ex: 1800 (optionnel)" class="form-input">
+        </div>
+        <div>
+          <label class="form-label">Technique</label>
+          <input id="af-technique" type="text" value="${artwork?.technique || ''}" placeholder="ex: Huile sur toile" class="form-input">
+        </div>
+        <div>
+          <label class="form-label">Dimensions</label>
+          <input id="af-size" type="text" value="${artwork?.size || ''}" placeholder="ex: 60×80 cm" class="form-input">
+        </div>
+        <div>
+          <label class="form-label">Catégorie</label>
+          <select id="af-category" class="form-input">
+            ${['Peinture','Art Abstrait','Art Décoratif','Illustration','Photographie'].map(c =>
+              `<option ${artwork?.category===c?'selected':''}>${c}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Badge</label>
+          <select id="af-badge" class="form-input">
+            <option value="" ${!artwork?.badge?'selected':''}>Aucun</option>
+            <option value="new" ${artwork?.badge==='new'?'selected':''}>Nouveau</option>
+            <option value="featured" ${artwork?.badge==='featured'?'selected':''}>Vedette</option>
+            <option value="sale" ${artwork?.badge==='sale'?'selected':''}>Promo</option>
+          </select>
+        </div>
+        <div style="grid-column:span 2;">
+          <label class="form-label">Disponible à la vente</label>
+          <label style="display:flex;align-items:center;gap:0.6rem;cursor:pointer;margin-top:0.3rem;">
+            <input id="af-available" type="checkbox" ${artwork?.available!==false?'checked':''} style="width:1.1rem;height:1.1rem;accent-color:var(--color-gold);cursor:pointer;">
+            <span style="font-size:0.9rem;">Oui, disponible à l'achat</span>
+          </label>
+        </div>
+        <div style="grid-column:span 2;">
+          <label class="form-label">Image (URL)</label>
+          <input id="af-image-url" type="url" value="${artwork ? (state.customImages[artwork.id] || artwork.image) : ''}" placeholder="https://… ou laisser vide pour importer" class="form-input">
+        </div>
+        <div style="grid-column:span 2;">
+          <label class="form-label">Ou importer un fichier image</label>
+          <input id="af-image-file" type="file" accept="image/*" style="width:100%;padding:0.6rem;border:1px dashed var(--color-gray-300);border-radius:0.4rem;cursor:pointer;font-size:0.85rem;">
+        </div>
+        <div id="af-preview-box" style="grid-column:span 2;display:${(artwork && (state.customImages[artwork.id] || artwork.image)) ? 'block' : 'none'};">
+          <img id="af-preview" src="${artwork ? (state.customImages[artwork.id] || artwork.image) : ''}" alt="aperçu"
+            style="width:100%;max-height:220px;object-fit:cover;border-radius:0.5rem;border:1px solid var(--color-gray-200);">
+        </div>
+      </div>
+
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;">
+        <button onclick="saveArtworkForm(${artwork?.id || 'null'})" style="flex:1;padding:0.9rem;background:var(--gradient-main);color:#fff;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;font-size:0.9rem;">${isEdit ? '💾 Enregistrer' : '+ Ajouter'}</button>
+        <button onclick="document.getElementById('artwork-form-overlay').remove()" style="padding:0.9rem 1.5rem;border:1px solid var(--color-gray-200);background:none;color:var(--color-black);border-radius:0.5rem;cursor:pointer;">Annuler</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+
+  const urlInput = document.getElementById('af-image-url');
+  const fileInput = document.getElementById('af-image-file');
+  const preview = document.getElementById('af-preview');
+  const previewBox = document.getElementById('af-preview-box');
+
+  urlInput.addEventListener('input', () => {
+    if (urlInput.value) { preview.src = urlInput.value; previewBox.style.display = 'block'; }
+  });
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => { urlInput.value = e.target.result; preview.src = e.target.result; previewBox.style.display = 'block'; };
+    reader.readAsDataURL(file);
+  });
+}
+
+function saveArtworkForm(existingId) {
+  const title = document.getElementById('af-title').value.trim();
+  const price = parseInt(document.getElementById('af-price').value);
+  if (!title || !price) { showToast('⚠️ Titre et prix obligatoires'); return; }
+
+  const imgUrl = document.getElementById('af-image-url').value.trim();
+  const arr = [...getArtworks()];
+
+  if (existingId) {
+    const idx = arr.findIndex(a => a.id === existingId);
+    if (idx === -1) return;
+    arr[idx] = {
+      ...arr[idx],
+      title,
+      price,
+      originalPrice: parseInt(document.getElementById('af-original-price').value) || null,
+      description: document.getElementById('af-desc').value.trim(),
+      technique: document.getElementById('af-technique').value.trim(),
+      size: document.getElementById('af-size').value.trim(),
+      category: document.getElementById('af-category').value,
+      badge: document.getElementById('af-badge').value || null,
+      available: document.getElementById('af-available').checked,
+    };
+    if (imgUrl) state.customImages[existingId] = imgUrl;
+    saveCustomImages();
+    showToast('✅ Œuvre mise à jour !');
+  } else {
+    const newId = Math.max(0, ...arr.map(a => a.id)) + 1;
+    arr.push({
+      id: newId,
+      title,
+      artist: 'Safinase',
+      price,
+      originalPrice: parseInt(document.getElementById('af-original-price').value) || null,
+      image: imgUrl || 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/400px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg',
+      description: document.getElementById('af-desc').value.trim(),
+      technique: document.getElementById('af-technique').value.trim() || 'Huile sur toile',
+      size: document.getElementById('af-size').value.trim() || '–',
+      category: document.getElementById('af-category').value,
+      badge: document.getElementById('af-badge').value || null,
+      available: document.getElementById('af-available').checked,
+      rating: 5.0, reviews: 0, year: new Date().getFullYear(),
+    });
+    if (imgUrl) state.customImages[newId] = imgUrl;
+    saveCustomImages();
+    showToast('✅ Œuvre ajoutée !');
+  }
+
+  saveArtworks(arr);
+  document.getElementById('artwork-form-overlay').remove();
+  refreshGrids();
+}
 
 // ─── Artworks Data ────────────────────────────
 const artworks = [
@@ -443,7 +681,7 @@ function applyFilters() {
   const activeFilters = Array.from(document.querySelectorAll('.filter-option input:checked')).map(cb => cb.value);
   const sortValue = document.getElementById('sort-select')?.value || 'featured';
 
-  let filtered = artworks.filter(a => {
+  let filtered = getArtworks().filter(a => {
     const matchSearch = !searchTerm || a.title.toLowerCase().includes(searchTerm) || a.artist.toLowerCase().includes(searchTerm);
     const matchFilter = !activeFilters.length || activeFilters.some(f => a.style === f || a.technique.includes(f) || a.category === f);
     return matchSearch && matchFilter;
@@ -579,9 +817,19 @@ function renderArtworkCard(artwork) {
         <button class="artwork-wishlist ${inWishlist ? 'active' : ''}" data-wishlist-id="${artwork.id}" onclick="toggleWishlist(${artwork.id})" title="Favoris">
           ${inWishlist ? '♥' : '♡'}
         </button>
+        ${isAdmin() ? `
         <button class="artwork-change-img-btn" onclick="openChangeImageModal(${artwork.id}, event)" title="Changer l'image">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </button>
+        <button class="admin-edit-btn" onclick="openEditArtworkModal(${artwork.id});event.stopPropagation()" title="Modifier">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="admin-delete-btn" onclick="deleteArtwork(${artwork.id});event.stopPropagation()" title="Supprimer">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+        </button>` : `
+        <button class="artwork-change-img-btn" onclick="openChangeImageModal(${artwork.id}, event)" title="Changer l'image" style="display:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </button>`}
         <div class="artwork-card-overlay"></div>
         <div class="artwork-card-actions">
           <button class="artwork-card-btn" onclick="addToCart(${artwork.id})" ${!artwork.available ? 'disabled' : ''}>${artwork.available ? t('add_cart') : 'Vendu'}</button>
@@ -668,7 +916,9 @@ function debounce(fn, delay) {
 // ─── Init ─────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initAdminBar();
   initNav();
+  initAdminNavLink();
   initHeroSlider();
   initChat();
   initAnimations();
@@ -682,6 +932,31 @@ document.addEventListener('DOMContentLoaded', () => {
   updateTranslations();
   setLang(state.lang);
 });
+
+function initAdminNavLink() {
+  // Add admin/login link to nav actions
+  document.querySelectorAll('.nav-actions').forEach(nav => {
+    if (nav.querySelector('.admin-nav-btn')) return;
+    const btn = document.createElement('a');
+    btn.className = 'admin-nav-btn';
+    if (isAdmin()) {
+      btn.href = '#';
+      btn.title = 'Déconnexion admin';
+      btn.style.cssText = 'width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--gradient-main);color:white;font-size:0.7rem;font-weight:700;text-decoration:none;';
+      btn.textContent = 'S';
+      btn.onclick = e => { e.preventDefault(); adminLogout(); };
+    } else {
+      const isSubpage = window.location.pathname.includes('/pages/');
+      btn.href = isSubpage ? 'login.html' : 'pages/login.html';
+      btn.title = 'Connexion admin';
+      btn.style.cssText = 'width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--color-gray-100);color:var(--color-gray-500);font-size:0.75rem;text-decoration:none;transition:all 0.3s;';
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+      btn.onmouseover = () => { btn.style.background='var(--color-gold)'; btn.style.color='white'; };
+      btn.onmouseout = () => { btn.style.background='var(--color-gray-100)'; btn.style.color='var(--color-gray-500)'; };
+    }
+    nav.appendChild(btn);
+  });
+}
 
 // Close cart/modal on overlay click
 document.addEventListener('click', e => {

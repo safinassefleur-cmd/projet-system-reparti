@@ -49,32 +49,44 @@
 
       <!-- Gallery -->
       <div class="product-gallery">
-        <div class="product-main-image">
-          <div class="artwork-placeholder" style="background:linear-gradient(135deg,#0d0520,#4361ee,#7209b7);width:100%;height:100%;font-size:12rem;">🔥</div>
+        <div class="product-main-image" style="position:relative;">
+          <img id="product-main-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg" alt="Le Baiser – Klimt" style="width:100%;height:100%;object-fit:cover;border-radius:0.5rem;">
           <div class="zoom-hint">🔍 Cliquer pour zoomer</div>
+          <button onclick="openProductImageEditor()" style="position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,0.6);color:white;border:none;border-radius:2rem;padding:0.5rem 1rem;font-size:0.78rem;cursor:pointer;backdrop-filter:blur(4px);display:flex;align-items:center;gap:0.4rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            Changer l'image
+          </button>
         </div>
         <div class="product-thumbnails">
-          <div class="product-thumb active">🔥</div>
-          <div class="product-thumb">🎨</div>
-          <div class="product-thumb">🖼️</div>
-          <div class="product-thumb">✦</div>
+          <div class="product-thumb active" onclick="setProductImg(this,'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg')" style="overflow:hidden;padding:0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="product-thumb" onclick="setProductImg(this,'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg')" style="overflow:hidden;padding:0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="product-thumb" onclick="setProductImg(this,'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg')" style="overflow:hidden;padding:0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="product-thumb" onclick="setProductImg(this,'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg')" style="overflow:hidden;padding:0;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/800px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+          </div>
         </div>
       </div>
 
       <!-- Info -->
       <div class="product-info">
-        <a href="artist-profile.html" class="product-artist-link">Élise Morel · Artiste française</a>
+        <a href="artist-profile.html" class="product-artist-link">Gustav Klimt · Artiste autrichien (1862–1918)</a>
 
-        <h1 class="product-title">Danse des Flammes</h1>
+        <h1 class="product-title">Le Baiser</h1>
 
         <div class="product-rating">
           <span class="stars" style="color:var(--color-gold);font-size:1.1rem;">★★★★★</span>
-          <span style="font-size:0.9rem;color:var(--color-gray-500);">4.9 (42 avis)</span>
+          <span style="font-size:0.9rem;color:var(--color-gray-500);">5.0 (67 avis)</span>
           <span style="color:var(--color-green,#27ae60);font-size:0.8rem;margin-left:auto;">✓ Certificat d'authenticité inclus</span>
         </div>
 
         <div class="product-price-block">
-          <div class="product-price">5 200 €</div>
+          <div class="product-price">7 200 €</div>
           <div class="product-price-note">Prix TTC · Livraison assurée incluse</div>
           <div style="display:flex;align-items:center;gap:1rem;margin-top:0.8rem;">
             <span style="padding:0.3rem 0.8rem;background:#d4edda;color:#155724;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;">ORIGINAL UNIQUE</span>
@@ -277,13 +289,52 @@
 
 <script src="../js/app.js"></script>
 <script>
+  function setProductImg(thumbEl, src) {
+    document.getElementById('product-main-img').src = src;
+    document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+    thumbEl.classList.add('active');
+  }
+
+  function openProductImageEditor() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);';
+    overlay.innerHTML = `
+      <div style="background:var(--color-white);color:var(--color-black);border-radius:1rem;padding:2rem;max-width:500px;width:90%;box-shadow:0 30px 80px rgba(0,0,0,0.4);position:relative;">
+        <button onclick="this.closest('div[style]').remove()" style="position:absolute;top:1rem;right:1rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--color-gray-500);">✕</button>
+        <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:1.5rem;">Changer l'image du tableau</h3>
+        <div style="margin-bottom:1rem;">
+          <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-500);margin-bottom:0.5rem;">URL de l'image</div>
+          <input id="prod-img-url" type="url" placeholder="https://..." style="width:100%;padding:0.8rem 1rem;border:1px solid var(--color-gray-300);border-radius:0.5rem;font-size:0.9rem;background:var(--color-gray-100);color:var(--color-black);">
+        </div>
+        <div style="margin-bottom:1.5rem;">
+          <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-500);margin-bottom:0.5rem;">Ou importer un fichier</div>
+          <input id="prod-img-file" type="file" accept="image/*" style="width:100%;padding:0.6rem;border:1px dashed var(--color-gray-300);border-radius:0.5rem;font-size:0.85rem;cursor:pointer;">
+        </div>
+        <button onclick="applyProductImg(this)" style="width:100%;padding:0.85rem;background:var(--gradient-main);color:#fff;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;font-size:0.9rem;">Appliquer</button>
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+    const fileInput = document.getElementById('prod-img-file');
+    fileInput.addEventListener('change', () => {
+      const reader = new FileReader();
+      reader.onload = e => { document.getElementById('prod-img-url').value = e.target.result; };
+      reader.readAsDataURL(fileInput.files[0]);
+    });
+  }
+
+  function applyProductImg(btn) {
+    const url = document.getElementById('prod-img-url')?.value?.trim();
+    if (!url) return;
+    document.getElementById('product-main-img').src = url;
+    btn.closest('div[style]').remove();
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('similar-grid');
     if (grid) {
-      grid.innerHTML = artworks.filter(a => a.id !== 5).slice(0, 4).map(a => renderArtworkCard(a)).join('');
+      grid.innerHTML = artworks.filter(a => a.id !== 3).slice(0, 4).map(a => renderArtworkCard(a)).join('');
       initWishlistButtons();
     }
-    initProductThumbs();
   });
 </script>
 </body>

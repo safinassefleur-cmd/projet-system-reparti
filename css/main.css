@@ -774,6 +774,35 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+.artwork-change-img-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  opacity: 0;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(4px);
+  z-index: 3;
+}
+
+.artwork-card:hover .artwork-change-img-btn {
+  opacity: 1;
+}
+
+.artwork-change-img-btn:hover {
+  background: var(--gradient-main);
+  transform: scale(1.1);
+}
+
 .artwork-card-info {
   padding: 1.2rem 0;
 }

@@ -6,21 +6,70 @@
 const state = {
   cart: JSON.parse(localStorage.getItem('artanova_cart') || '[]'),
   wishlist: JSON.parse(localStorage.getItem('artanova_wishlist') || '[]'),
+  customImages: JSON.parse(localStorage.getItem('artanova_custom_images') || '{}'),
   theme: localStorage.getItem('artanova_theme') || 'light',
   lang: localStorage.getItem('artanova_lang') || 'fr',
   heroSlide: 0,
 };
 
-// ─── Sample Data ─────────────────────────────
+// ─── Artworks Data (vraies peintures du domaine public) ──────────
 const artworks = [
-  { id: 1, title: 'Lumières de l\'Aube', artist: 'Élise Morel', price: 2400, originalPrice: 3200, emoji: '🌅', category: 'Peinture', style: 'Impressionnisme', technique: 'Huile sur toile', size: '80×100 cm', color: '#E8C97A', badge: 'new', available: true, rating: 4.9, reviews: 24, year: 2023 },
-  { id: 2, title: 'Rêverie Nocturne', artist: 'Karim Benzara', price: 1800, emoji: '🌌', category: 'Peinture', style: 'Surréalisme', technique: 'Acrylique', size: '60×80 cm', color: '#4A2C90', badge: null, available: true, rating: 4.7, reviews: 18, year: 2024 },
-  { id: 3, title: 'Méditation Bleue', artist: 'Sofia Chen', price: 3600, emoji: '🔵', category: 'Art Abstrait', style: 'Abstrait', technique: 'Huile sur toile', size: '100×120 cm', color: '#2D5A8E', badge: 'featured', available: true, rating: 5.0, reviews: 31, year: 2023 },
-  { id: 4, title: 'Le Marché aux Épices', artist: 'Hassan Tazi', price: 950, emoji: '🌶️', category: 'Illustration', style: 'Réalisme', technique: 'Aquarelle', size: '40×50 cm', color: '#C0392B', badge: null, available: true, rating: 4.8, reviews: 15, year: 2024 },
-  { id: 5, title: 'Danse des Flammes', artist: 'Élise Morel', price: 5200, emoji: '🔥', category: 'Peinture', style: 'Expressionnisme', technique: 'Huile sur toile', size: '120×150 cm', color: '#E74C3C', badge: 'featured', available: false, rating: 4.9, reviews: 42, year: 2022 },
-  { id: 6, title: 'Sérénité d\'Automne', artist: 'Marie Dubois', price: 1200, emoji: '🍂', category: 'Photographie', style: 'Naturalisme', technique: 'Photographie', size: '50×70 cm', color: '#D35400', badge: null, available: true, rating: 4.6, reviews: 9, year: 2024 },
-  { id: 7, title: 'Géométrie Dorée', artist: 'Karim Benzara', price: 2100, emoji: '✦', category: 'Art Abstrait', style: 'Art Géométrique', technique: 'Acrylique sur toile', size: '70×70 cm', color: '#F1C40F', badge: 'sale', available: true, rating: 4.8, reviews: 20, year: 2023 },
-  { id: 8, title: 'Forêt Enchantée', artist: 'Sofia Chen', price: 1600, emoji: '🌲', category: 'Peinture', style: 'Fantastique', technique: 'Huile sur toile', size: '60×90 cm', color: '#27AE60', badge: null, available: true, rating: 4.7, reviews: 12, year: 2024 },
+  {
+    id: 1, title: 'Impression, Soleil Levant', artist: 'Claude Monet', price: 2400, originalPrice: 3200,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg',
+    category: 'Peinture', style: 'Impressionnisme', technique: 'Huile sur toile', size: '48×63 cm',
+    badge: 'new', available: true, rating: 4.9, reviews: 24, year: 1872,
+    description: 'Tableau fondateur de l\'impressionnisme, cette œuvre représente le port du Havre au lever du soleil.',
+  },
+  {
+    id: 2, title: 'La Nuit Étoilée', artist: 'Vincent van Gogh', price: 5800,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+    category: 'Peinture', style: 'Post-Impressionnisme', technique: 'Huile sur toile', size: '73,7×92,1 cm',
+    badge: 'featured', available: true, rating: 5.0, reviews: 89, year: 1889,
+    description: 'Chef-d\'œuvre de Van Gogh peint à l\'asile de Saint-Rémy, représentant un ciel nocturne tourbillonnant.',
+  },
+  {
+    id: 3, title: 'Le Baiser', artist: 'Gustav Klimt', price: 7200,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg',
+    category: 'Art Décoratif', style: 'Symbolisme', technique: 'Huile et feuille d\'or', size: '180×180 cm',
+    badge: 'featured', available: true, rating: 5.0, reviews: 67, year: 1907,
+    description: 'Symbole de l\'amour universel, peint avec de la feuille d\'or pendant la "période d\'or" de Klimt.',
+  },
+  {
+    id: 4, title: 'La Liberté guidant le Peuple', artist: 'Eugène Delacroix', price: 3400,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Eug%C3%A8ne_Delacroix_-_La_libert%C3%A9_guidant_le_peuple.jpg/800px-Eug%C3%A8ne_Delacroix_-_La_libert%C3%A9_guidant_le_peuple.jpg',
+    category: 'Peinture', style: 'Romantisme', technique: 'Huile sur toile', size: '260×325 cm',
+    badge: null, available: true, rating: 4.8, reviews: 45, year: 1830,
+    description: 'Allégorie de la Révolution de Juillet 1830, l\'une des œuvres les plus emblématiques du romantisme français.',
+  },
+  {
+    id: 5, title: 'Le Cri', artist: 'Edvard Munch', price: 4900,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/800px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg',
+    category: 'Peinture', style: 'Expressionnisme', technique: 'Huile et tempera', size: '91×73 cm',
+    badge: null, available: false, rating: 4.9, reviews: 52, year: 1893,
+    description: 'Expression de l\'angoisse existentielle moderne, tableau culte de l\'expressionnisme norvégien.',
+  },
+  {
+    id: 6, title: 'La Danse au Moulin de la Galette', artist: 'Pierre-Auguste Renoir', price: 2800,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Mus%C3%A9e_d%27Orsay_RF_2739_%281876%29.jpg/800px-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Mus%C3%A9e_d%27Orsay_RF_2739_%281876%29.jpg',
+    category: 'Peinture', style: 'Impressionnisme', technique: 'Huile sur toile', size: '131×175 cm',
+    badge: null, available: true, rating: 4.7, reviews: 31, year: 1876,
+    description: 'Scène de joie populaire à Montmartre, chef-d\'œuvre de la lumière impressionniste de Renoir.',
+  },
+  {
+    id: 7, title: 'La Naissance de Vénus', artist: 'Sandro Botticelli', price: 6100,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg/1024px-Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg',
+    category: 'Peinture', style: 'Renaissance', technique: 'Tempera sur toile', size: '172,5×278,9 cm',
+    badge: 'sale', available: true, rating: 4.8, reviews: 78, year: 1485,
+    description: 'Icône de la Renaissance florentine, représentant la déesse Vénus émergeant de la mer.',
+  },
+  {
+    id: 8, title: 'La Forêt Tropicale avec Tigre', artist: 'Henri Rousseau', price: 1950,
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Henri_Rousseau_-_Surprised%21.jpg/1024px-Henri_Rousseau_-_Surprised%21.jpg',
+    category: 'Peinture', style: 'Naïf', technique: 'Huile sur toile', size: '129,8×161,9 cm',
+    badge: null, available: true, rating: 4.6, reviews: 19, year: 1891,
+    description: 'Jungle imaginaire peinte par le Douanier Rousseau, représentant un tigre surpris par l\'orage.',
+  },
 ];
 
 const artists = [
@@ -151,7 +200,9 @@ function renderCartItems() {
   } else {
     container.innerHTML = state.cart.map(item => `
       <div class="cart-item">
-        <div class="cart-item-image">${item.emoji}</div>
+        <div class="cart-item-image" style="overflow:hidden;border-radius:0.3rem;">
+          <img src="${getArtworkImage(item.id)}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
         <div>
           <div class="cart-item-name">${item.title}</div>
           <div class="cart-item-artist">${item.artist}</div>
@@ -277,7 +328,17 @@ function openQuickView(artworkId) {
   const modal = document.getElementById('quick-view-modal');
   if (!modal) return;
 
-  modal.querySelector('.modal-image').textContent = artwork.emoji;
+  const imgEl = modal.querySelector('.modal-image');
+  if (imgEl) {
+    imgEl.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = getArtworkImage(artwork.id);
+    img.alt = artwork.title;
+    img.setAttribute('data-artwork-img', artwork.id);
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+    img.onerror = () => { img.style.display='none'; };
+    imgEl.appendChild(img);
+  }
   modal.querySelector('.modal-artwork-title').textContent = artwork.title;
   modal.querySelector('.modal-artwork-artist').textContent = artwork.artist;
   modal.querySelector('.modal-artwork-price').textContent = artwork.price.toLocaleString('fr-FR') + ' €';
@@ -410,20 +471,121 @@ function applyFilters() {
   }
 }
 
+// ─── Image helpers ────────────────────────────
+function getArtworkImage(artworkId) {
+  const artwork = artworks.find(a => a.id === artworkId);
+  return state.customImages[artworkId] || (artwork && artwork.image) || '';
+}
+
+function saveCustomImages() {
+  localStorage.setItem('artanova_custom_images', JSON.stringify(state.customImages));
+}
+
+// ─── Change Image Modal ───────────────────────
+function openChangeImageModal(artworkId, event) {
+  if (event) event.stopPropagation();
+  const artwork = artworks.find(a => a.id === artworkId);
+  if (!artwork) return;
+
+  const existing = document.getElementById('change-image-modal-overlay');
+  if (existing) existing.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'change-image-modal-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);';
+  overlay.innerHTML = `
+    <div style="background:var(--color-white);color:var(--color-black);border-radius:1rem;padding:2rem;max-width:500px;width:90%;box-shadow:0 30px 80px rgba(0,0,0,0.4);position:relative;">
+      <button onclick="document.getElementById('change-image-modal-overlay').remove()" style="position:absolute;top:1rem;right:1rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--color-gray-500);">✕</button>
+      <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:0.4rem;">Changer l'image</h3>
+      <p style="color:var(--color-gray-500);font-size:0.85rem;margin-bottom:1.5rem;">«${artwork.title}» — ${artwork.artist}</p>
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-500);margin-bottom:0.5rem;">URL de l'image</div>
+        <input id="img-url-input" type="url" placeholder="https://... (JPG, PNG, WebP)" value="${state.customImages[artworkId] || artwork.image}"
+          style="width:100%;padding:0.8rem 1rem;border:1px solid var(--color-gray-300);border-radius:0.5rem;font-size:0.9rem;background:var(--color-gray-100);color:var(--color-black);outline:none;">
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-500);margin-bottom:0.5rem;">Ou importer un fichier</div>
+        <input id="img-file-input" type="file" accept="image/*"
+          style="width:100%;padding:0.6rem;border:1px dashed var(--color-gray-300);border-radius:0.5rem;font-size:0.85rem;cursor:pointer;">
+      </div>
+      <div id="img-preview-box" style="margin-bottom:1.5rem;display:${state.customImages[artworkId] || artwork.image ? 'block' : 'none'};">
+        <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-gray-500);margin-bottom:0.5rem;">Aperçu</div>
+        <img id="img-preview" src="${state.customImages[artworkId] || artwork.image}" alt="aperçu"
+          style="width:100%;max-height:200px;object-fit:cover;border-radius:0.5rem;border:1px solid var(--color-gray-200);">
+      </div>
+      <div style="display:flex;gap:1rem;">
+        <button onclick="applyImageChange(${artworkId})" style="flex:1;padding:0.85rem;background:var(--gradient-main);color:#fff;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;font-size:0.9rem;">Appliquer</button>
+        ${state.customImages[artworkId] ? `<button onclick="resetImage(${artworkId})" style="padding:0.85rem 1.2rem;border:1px solid var(--color-gray-300);background:none;color:var(--color-black);border-radius:0.5rem;cursor:pointer;font-size:0.85rem;">Réinitialiser</button>` : ''}
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+
+  const urlInput = document.getElementById('img-url-input');
+  const fileInput = document.getElementById('img-file-input');
+  const preview = document.getElementById('img-preview');
+  const previewBox = document.getElementById('img-preview-box');
+
+  urlInput.addEventListener('input', () => {
+    if (urlInput.value) { preview.src = urlInput.value; previewBox.style.display = 'block'; }
+  });
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      urlInput.value = e.target.result;
+      preview.src = e.target.result;
+      previewBox.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function applyImageChange(artworkId) {
+  const url = document.getElementById('img-url-input')?.value?.trim();
+  if (!url) return;
+  state.customImages[artworkId] = url;
+  saveCustomImages();
+  document.getElementById('change-image-modal-overlay')?.remove();
+  refreshAllArtworkImages(artworkId);
+  showToast('🖼 Image mise à jour !');
+}
+
+function resetImage(artworkId) {
+  delete state.customImages[artworkId];
+  saveCustomImages();
+  document.getElementById('change-image-modal-overlay')?.remove();
+  refreshAllArtworkImages(artworkId);
+  showToast('↩ Image réinitialisée');
+}
+
+function refreshAllArtworkImages(artworkId) {
+  const newSrc = getArtworkImage(artworkId);
+  document.querySelectorAll(`[data-artwork-img="${artworkId}"]`).forEach(img => { img.src = newSrc; });
+}
+
 // ─── Artwork Card Renderer ────────────────────
 function renderArtworkCard(artwork) {
   const inWishlist = isInWishlist(artwork.id);
   const badge = artwork.badge ? `<span class="artwork-card-badge ${artwork.badge === 'sale' ? '' : artwork.badge}">${artwork.badge === 'new' ? 'Nouveau' : artwork.badge === 'featured' ? 'Vedette' : 'Promo'}</span>` : '';
   const soldBadge = !artwork.available ? '<span class="artwork-card-badge sold">Vendu</span>' : '';
   const stars = '★'.repeat(Math.floor(artwork.rating)) + (artwork.rating % 1 ? '☆' : '');
+  const imgSrc = getArtworkImage(artwork.id);
 
   return `
     <div class="artwork-card" data-id="${artwork.id}">
       <div class="artwork-card-image">
-        <div class="artwork-placeholder" style="background:linear-gradient(135deg, ${artwork.color}22, ${artwork.color}44)">${artwork.emoji}</div>
+        <img data-artwork-img="${artwork.id}" src="${imgSrc}" alt="${artwork.title}" loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div style="display:none;position:absolute;inset:0;background:var(--gradient-subtle);align-items:center;justify-content:center;font-size:3rem;">🖼️</div>
         ${badge}${soldBadge}
         <button class="artwork-wishlist ${inWishlist ? 'active' : ''}" data-wishlist-id="${artwork.id}" onclick="toggleWishlist(${artwork.id})" title="Favoris">
           ${inWishlist ? '♥' : '♡'}
+        </button>
+        <button class="artwork-change-img-btn" onclick="openChangeImageModal(${artwork.id}, event)" title="Changer l'image">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         </button>
         <div class="artwork-card-overlay"></div>
         <div class="artwork-card-actions">
@@ -434,6 +596,7 @@ function renderArtworkCard(artwork) {
       <div class="artwork-card-info">
         <div class="artwork-artist-name">${artwork.artist}</div>
         <div class="artwork-title">${artwork.title}</div>
+        <div style="color:var(--color-gray-500);font-size:0.75rem;margin-bottom:0.3rem;">${artwork.year} · ${artwork.technique}</div>
         <div class="artwork-price-row">
           <div>
             <span class="artwork-price">${artwork.price.toLocaleString('fr-FR')} €</span>
@@ -474,16 +637,7 @@ function initNewsletter() {
 
 // ─── Product Thumbnails ───────────────────────
 function initProductThumbs() {
-  const thumbs = document.querySelectorAll('.product-thumb');
-  const mainImg = document.querySelector('.product-main-image .artwork-placeholder');
-  const emojis = ['🎨', '🖼️', '✦', '🌅'];
-  thumbs.forEach((thumb, i) => {
-    thumb.addEventListener('click', () => {
-      thumbs.forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-      if (mainImg && emojis[i]) mainImg.textContent = emojis[i];
-    });
-  });
+  // Now handled by inline setProductImg() in product.html
 }
 
 // ─── Language Selector ────────────────────────

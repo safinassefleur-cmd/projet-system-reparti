@@ -33,9 +33,9 @@
 
 <div class="page-header">
   <div class="container">
-    <div class="label text-gold" style="margin-bottom:0.8rem;">340+ artistes partenaires</div>
-    <h1 class="page-header-title">Nos Artistes</h1>
-    <p class="page-header-subtitle">Des talents du monde entier, unis par la passion de l'art</p>
+    <div class="label text-gold" style="margin-bottom:0.8rem;">Artiste peintre</div>
+    <h1 class="page-header-title">Safinase</h1>
+    <p class="page-header-subtitle">Peintures originales — une vision artistique unique et personnelle</p>
   </div>
 </div>
 
@@ -59,9 +59,9 @@
     <!-- Featured Artist -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:4rem;background:var(--color-black);overflow:hidden;" class="fade-in">
       <div style="padding:4rem;display:flex;flex-direction:column;justify-content:center;">
-        <div class="label text-gold" style="margin-bottom:1rem;">Artiste du mois</div>
-        <h2 style="font-family:var(--font-serif);font-size:2.5rem;color:white;margin-bottom:1rem;">Élise Morel</h2>
-        <p style="color:var(--color-gray-400);line-height:1.7;max-width:40ch;margin-bottom:2rem;">Peintre expressionniste française, Élise crée des œuvres qui capturent la lumière et le mouvement avec une intensité rare. Ses toiles figurent dans des collections privées à travers le monde.</p>
+        <div class="label text-gold" style="margin-bottom:1rem;">L'artiste</div>
+        <h2 style="font-family:var(--font-serif);font-size:2.5rem;color:white;margin-bottom:1rem;">Safinase</h2>
+        <p style="color:var(--color-gray-400);line-height:1.7;max-width:40ch;margin-bottom:2rem;">Artiste peintre passionnée, Safinase crée des œuvres qui capturent la lumière, les émotions et le mouvement avec une intensité rare. Chaque toile est unique, peinte à la main avec soin.</p>
         <div style="display:flex;gap:2rem;margin-bottom:2rem;">
           <div><div style="font-family:var(--font-serif);font-size:1.8rem;color:var(--color-gold);">24</div><div style="font-size:0.7rem;color:var(--color-gray-400);letter-spacing:0.1em;text-transform:uppercase;">Œuvres</div></div>
           <div><div style="font-family:var(--font-serif);font-size:1.8rem;color:var(--color-gold);">148</div><div style="font-size:0.7rem;color:var(--color-gray-400);letter-spacing:0.1em;text-transform:uppercase;">Ventes</div></div>
@@ -74,97 +74,17 @@
       </div>
     </div>
 
-    <!-- All Artists Grid -->
-    <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Tous nos artistes</h2>
+    <!-- Portfolio Grid -->
+    <h2 style="font-family:var(--font-serif);font-size:2rem;margin-bottom:2rem;">Ma collection</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;" id="artists-grid">
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;transition:box-shadow 0.3s;cursor:pointer;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;overflow:hidden;position:relative;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Mus%C3%A9e_d%27Orsay_RF_2739_%281876%29.jpg/800px-Auguste_Renoir_-_Dance_at_Le_Moulin_de_la_Galette_-_Mus%C3%A9e_d%27Orsay_RF_2739_%281876%29.jpg" alt="Renoir" style="width:100%;height:100%;object-fit:cover;">
-          <span style="position:absolute;top:1rem;right:1rem;background:var(--color-gold);color:white;padding:0.2rem 0.6rem;font-size:0.65rem;font-weight:700;letter-spacing:0.08em;">Vedette</span>
-        </div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Élise Morel</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Peinture Classique · France 🇫🇷</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>24 œuvres</span><span>4.9 ★</span><span>148 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Élise Morel')">Suivre</button>
-        </div>
-      </div>
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;cursor:pointer;transition:box-shadow 0.3s;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;overflow:hidden;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Henri_Rousseau_-_Surprised%21.jpg/800px-Henri_Rousseau_-_Surprised%21.jpg" alt="Rousseau" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Karim Benzara</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Art Contemporain · Maroc 🇲🇦</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>18 œuvres</span><span>4.7 ★</span><span>89 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Karim Benzara')">Suivre</button>
-        </div>
-      </div>
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;cursor:pointer;transition:box-shadow 0.3s;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;overflow:hidden;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg" alt="Monet" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Sofia Chen</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Art Abstrait · Chine 🇨🇳</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>31 œuvres</span><span>5.0 ★</span><span>215 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Sofia Chen')">Suivre</button>
-        </div>
-      </div>
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;cursor:pointer;transition:box-shadow 0.3s;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;background:linear-gradient(135deg,#1a0505,#5a1515);display:flex;align-items:center;justify-content:center;font-size:6rem;">👨‍🎨</div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Hassan Tazi</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Aquarelle · Maroc 🇲🇦</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>15 œuvres</span><span>4.8 ★</span><span>67 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Hassan Tazi')">Suivre</button>
-        </div>
-      </div>
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;cursor:pointer;transition:box-shadow 0.3s;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;background:linear-gradient(135deg,#0d0d0d,#303030);display:flex;align-items:center;justify-content:center;font-size:6rem;">📸</div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Marie Dubois</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Photographie · France 🇫🇷</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>9 œuvres</span><span>4.6 ★</span><span>34 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Marie Dubois')">Suivre</button>
-        </div>
-      </div>
-
-      <div class="artist-profile-card" style="border:1px solid var(--color-gray-200);overflow:hidden;cursor:pointer;transition:box-shadow 0.3s;" onclick="location.href='artist-profile.html'" onmouseenter="this.style.boxShadow='var(--shadow-md)'" onmouseleave="this.style.boxShadow='none'">
-        <div style="height:200px;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);display:flex;align-items:center;justify-content:center;font-size:6rem;">💻</div>
-        <div style="padding:1.5rem;">
-          <div style="font-family:var(--font-serif);font-size:1.3rem;margin-bottom:0.3rem;">Léo Fontaine</div>
-          <div style="font-size:0.7rem;color:var(--color-gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.8rem;">Art Numérique · Belgique 🇧🇪</div>
-          <div style="display:flex;justify-content:space-between;font-size:0.8rem;color:var(--color-gray-400);margin-bottom:1rem;">
-            <span>22 œuvres</span><span>4.8 ★</span><span>112 ventes</span>
-          </div>
-          <button class="follow-btn w-full" onclick="event.stopPropagation();showToast('✓ Vous suivez Léo Fontaine')">Suivre</button>
-        </div>
-      </div>
-
     </div>
 
-    <!-- CTA for artists -->
+    <!-- CTA -->
     <div style="margin-top:4rem;padding:4rem;background:var(--color-black);text-align:center;" class="fade-in">
       <div style="font-size:3rem;margin-bottom:1rem;">🎨</div>
-      <h2 style="font-family:var(--font-serif);font-size:2rem;color:white;margin-bottom:1rem;">Vous êtes artiste ?</h2>
-      <p style="color:var(--color-gray-400);max-width:50ch;margin:0 auto 2rem;">Rejoignez notre communauté d'artistes et commencez à vendre vos œuvres à des collectionneurs du monde entier.</p>
-      <a href="dashboard.html" class="btn btn-primary">Rejoindre ArtaNova</a>
+      <h2 style="font-family:var(--font-serif);font-size:2rem;color:white;margin-bottom:1rem;">Commandez une œuvre originale</h2>
+      <p style="color:var(--color-gray-400);max-width:50ch;margin:0 auto 2rem;">Chaque tableau est unique, peint à la main. Contactez Safinase pour une commande personnalisée ou explorez la galerie.</p>
+      <a href="gallery.html" class="btn btn-primary">Voir toutes les œuvres</a>
     </div>
   </div>
 </main>
@@ -196,6 +116,13 @@
 
 <script src="../js/app.js"></script>
 <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('artists-grid');
+    if (grid) {
+      grid.innerHTML = artworks.map(a => renderArtworkCard(a)).join('');
+      initWishlistButtons();
+    }
+  });
   function filterBySpecialty(btn, specialty) {
     document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');

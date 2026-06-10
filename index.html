@@ -122,12 +122,12 @@
   <!-- Stats -->
   <div class="hero-stats container" aria-label="Statistiques">
     <div class="hero-stat">
-      <div class="hero-stat-number">2 400+</div>
-      <div class="hero-stat-label">Œuvres disponibles</div>
+      <div class="hero-stat-number">8</div>
+      <div class="hero-stat-label">Tableaux originaux</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-number">340+</div>
-      <div class="hero-stat-label">Artistes partenaires</div>
+      <div class="hero-stat-number">100%</div>
+      <div class="hero-stat-label">Peints à la main</div>
     </div>
     <div class="hero-stat">
       <div class="hero-stat-number">15 000+</div>
@@ -220,7 +220,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/800px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg" alt="Le Cri" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 60%);"></div>
         <div class="featured-info" style="position:relative;z-index:1;">
-          <div class="artwork-artist-name">Edvard Munch</div>
+          <div class="artwork-artist-name">Safinase</div>
           <div class="artwork-title" style="color:white;font-family:var(--font-serif);font-size:1.3rem;margin:0.3rem 0">Le Cri</div>
           <div style="color:var(--color-gold);font-family:var(--font-serif);font-size:1.1rem;">4 900 €</div>
         </div>
@@ -231,7 +231,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/800px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="La Nuit Étoilée" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 60%);"></div>
         <div class="featured-info" style="position:relative;z-index:1;">
-          <div class="artwork-artist-name">Vincent van Gogh</div>
+          <div class="artwork-artist-name">Safinase</div>
           <div style="color:white;font-family:var(--font-serif)">La Nuit Étoilée</div>
           <div style="color:var(--color-gold)">5 800 €</div>
         </div>
@@ -241,7 +241,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg" alt="Le Baiser" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 60%);"></div>
         <div class="featured-info" style="position:relative;z-index:1;">
-          <div class="artwork-artist-name">Gustav Klimt</div>
+          <div class="artwork-artist-name">Safinase</div>
           <div style="color:white;font-family:var(--font-serif)">Le Baiser</div>
           <div style="color:var(--color-gold)">7 200 €</div>
         </div>
@@ -251,7 +251,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Monet_-_Impression%2C_Sunrise.jpg/800px-Monet_-_Impression%2C_Sunrise.jpg" alt="Impression Soleil Levant" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 60%);"></div>
         <div class="featured-info" style="position:relative;z-index:1;">
-          <div class="artwork-artist-name">Claude Monet</div>
+          <div class="artwork-artist-name">Safinase</div>
           <div style="color:white;font-family:var(--font-serif)">Impression, Soleil Levant</div>
           <div style="color:var(--color-gold)">2 400 €</div>
         </div>
@@ -290,55 +290,36 @@
       <div>
         <div class="section-eyebrow">
           <div class="section-eyebrow-line"></div>
-          <span class="label text-gold" data-i18n="section_artists">Artistes vedettes</span>
+          <span class="label text-gold" data-i18n="section_artists">L'artiste</span>
         </div>
-        <h2 class="section-title">Rencontrez nos artistes</h2>
+        <h2 class="section-title">Safinase</h2>
       </div>
-      <a href="pages/artists.html" class="btn btn-ghost">Tous les artistes →</a>
+      <a href="pages/artist-profile.html" class="btn btn-ghost">Voir le profil →</a>
     </div>
 
-    <div class="artists-grid stagger-children">
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">👩‍🎨</div></div>
-        <div class="artist-name">Élise Morel</div>
-        <div class="artist-specialty">Peinture Classique</div>
-        <div class="artist-works-count">24 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" class="fade-in">
+      <div style="overflow:hidden;border-radius:0.5rem;aspect-ratio:4/3;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg/800px-The_Kiss_-_Gustav_Klimt_-_Google_Art_Project.jpg" alt="Œuvre de Safinase" style="width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
       </div>
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">👨‍🎨</div></div>
-        <div class="artist-name">Karim Benzara</div>
-        <div class="artist-specialty">Art Contemporain</div>
-        <div class="artist-works-count">18 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
-      </div>
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">👩‍🎨</div></div>
-        <div class="artist-name">Sofia Chen</div>
-        <div class="artist-specialty">Art Abstrait</div>
-        <div class="artist-works-count">31 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
-      </div>
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">👨‍🎨</div></div>
-        <div class="artist-name">Hassan Tazi</div>
-        <div class="artist-specialty">Aquarelle & Illustration</div>
-        <div class="artist-works-count">15 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
-      </div>
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">📸</div></div>
-        <div class="artist-name">Marie Dubois</div>
-        <div class="artist-specialty">Photographie Artistique</div>
-        <div class="artist-works-count">9 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
-      </div>
-      <div class="artist-card" onclick="location.href='pages/artist-profile.html'">
-        <div class="artist-avatar"><div class="artist-avatar-placeholder">💻</div></div>
-        <div class="artist-name">Léo Fontaine</div>
-        <div class="artist-specialty">Art Numérique</div>
-        <div class="artist-works-count">22 œuvres disponibles</div>
-        <button class="follow-btn">Suivre</button>
+      <div>
+        <div class="label text-gold" style="margin-bottom:1rem;">Artiste peintre</div>
+        <p style="font-family:var(--font-serif);font-size:1.4rem;line-height:1.6;margin-bottom:1.5rem;">"Je peins ce que je ressens — la lumière, l'émotion, le mouvement. Chaque tableau est un morceau de mon âme."</p>
+        <p style="color:var(--color-gray-500);margin-bottom:2rem;line-height:1.8;">Artiste peintre passionnée, Safinase crée des œuvres uniques à la main. Chaque tableau est disponible en original ou en reproduction de qualité musée.</p>
+        <div style="display:flex;gap:2.5rem;margin-bottom:2rem;">
+          <div>
+            <div style="font-family:var(--font-serif);font-size:2rem;color:var(--color-gold);">8</div>
+            <div style="font-size:0.7rem;color:var(--color-gray-400);letter-spacing:0.1em;text-transform:uppercase;">Œuvres</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-serif);font-size:2rem;color:var(--color-gold);">4.9★</div>
+            <div style="font-size:0.7rem;color:var(--color-gray-400);letter-spacing:0.1em;text-transform:uppercase;">Note</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-serif);font-size:2rem;color:var(--color-gold);">100%</div>
+            <div style="font-size:0.7rem;color:var(--color-gray-400);letter-spacing:0.1em;text-transform:uppercase;">Original</div>
+          </div>
+        </div>
+        <a href="pages/artist-profile.html" class="btn btn-primary">Voir le portfolio complet</a>
       </div>
     </div>
   </div>
@@ -376,7 +357,7 @@
 
     <div class="testimonials-track stagger-children">
       <div class="testimonial-card">
-        <p class="testimonial-text">« J'ai commandé un tableau de Sofia Chen pour mon salon. La qualité est époustouflante, la livraison rapide et le service client exceptionnel. Je recommande vivement ! »</p>
+        <p class="testimonial-text">« J'ai commandé un tableau de Safinase pour mon salon. La qualité est époustouflante, la livraison rapide et le service client exceptionnel. Je recommande vivement ! »</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">👩</div>
           <div>
@@ -391,7 +372,7 @@
         <div class="testimonial-author">
           <div class="testimonial-avatar">👨</div>
           <div>
-            <div class="testimonial-name">Karim Benzara</div>
+            <div class="testimonial-name">Safinase</div>
             <div class="testimonial-location">Casablanca, Maroc ⭐⭐⭐⭐⭐</div>
           </div>
         </div>

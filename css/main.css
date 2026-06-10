@@ -6,39 +6,48 @@
 :root {
   --color-black: #0a0a0a;
   --color-white: #fafafa;
-  --color-cream: #f5f0e8;
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8c97a;
-  --color-gold-dark: #a07830;
-  --color-gray-100: #f0ede8;
-  --color-gray-200: #e0dbd2;
-  --color-gray-300: #c8c0b4;
-  --color-gray-400: #a09888;
-  --color-gray-500: #7a7068;
-  --color-gray-600: #5a5248;
-  --color-gray-700: #3a3228;
-  --color-gray-800: #1e1a14;
+  --color-cream: #f0eeff;
+  --color-gold: #f72585;
+  --color-gold-light: #ff6fb7;
+  --color-gold-dark: #c9006a;
+  --color-blue: #4361ee;
+  --color-violet: #7209b7;
+  --color-pink: #f72585;
+  --color-red: #e63946;
+  --gradient-main: linear-gradient(135deg, #4361ee 0%, #7209b7 40%, #f72585 75%, #e63946 100%);
+  --gradient-accent: linear-gradient(90deg, #f72585, #7209b7);
+  --gradient-subtle: linear-gradient(135deg, rgba(67,97,238,0.15) 0%, rgba(114,9,183,0.15) 50%, rgba(247,37,133,0.15) 100%);
+  --color-gray-100: #f0eeff;
+  --color-gray-200: #e2d9f3;
+  --color-gray-300: #c8b8e8;
+  --color-gray-400: #a090c8;
+  --color-gray-500: #7a6898;
+  --color-gray-600: #5a4878;
+  --color-gray-700: #3a2858;
+  --color-gray-800: #1e1030;
   --font-serif: 'Georgia', 'Times New Roman', serif;
   --font-sans: 'Helvetica Neue', Arial, sans-serif;
   --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
   --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
   --shadow-lg: 0 20px 60px rgba(0,0,0,0.2);
-  --shadow-gold: 0 4px 20px rgba(201,168,76,0.3);
+  --shadow-gold: 0 4px 20px rgba(247,37,133,0.35);
+  --shadow-violet: 0 4px 20px rgba(114,9,183,0.35);
+  --shadow-blue: 0 4px 20px rgba(67,97,238,0.35);
 }
 
 [data-theme="dark"] {
   --color-black: #fafafa;
-  --color-white: #0a0a0a;
-  --color-cream: #1a1610;
-  --color-gray-100: #1e1a14;
-  --color-gray-200: #2a2520;
-  --color-gray-300: #3a3530;
-  --color-gray-400: #6a6560;
-  --color-gray-500: #8a8580;
-  --color-gray-600: #b0aba6;
-  --color-gray-700: #d0cbc6;
-  --color-gray-800: #eae5e0;
+  --color-white: #08050f;
+  --color-cream: #12082a;
+  --color-gray-100: #1a0d30;
+  --color-gray-200: #251540;
+  --color-gray-300: #3a2558;
+  --color-gray-400: #6a5888;
+  --color-gray-500: #9a88b8;
+  --color-gray-600: #c0b0d8;
+  --color-gray-700: #ddd0f0;
+  --color-gray-800: #f0e8ff;
 }
 
 *, *::before, *::after {
@@ -146,12 +155,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background: var(--color-gold);
-  color: var(--color-white);
+  background: var(--gradient-main);
+  color: #fff;
+  border: none;
 }
 
 .btn-primary:hover {
-  background: var(--color-gold-dark);
+  background: var(--gradient-accent);
   transform: translateY(-2px);
   box-shadow: var(--shadow-gold);
 }
@@ -212,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="dark"] .nav.scrolled {
-  background: rgba(10,10,10,0.96);
+  background: rgba(8,5,15,0.96);
 }
 
 .nav-inner {
@@ -397,7 +407,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero-slide.active { opacity: 1; }
 
 .hero-slide-1 {
-  background: linear-gradient(135deg, #1a0e05 0%, #2d1810 30%, #4a2c15 60%, #3d2010 100%);
+  background: linear-gradient(135deg, #0d0520 0%, #1a0840 30%, #2d1060 60%, #4361ee 100%);
 }
 
 .hero-slide-2 {
@@ -835,7 +845,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .featured-main .artwork-placeholder {
   height: 100%;
-  background: linear-gradient(135deg, #2d1810, #4a2c15);
+  background: linear-gradient(135deg, #0d0520, #7209b7);
   font-size: 8rem;
 }
 
@@ -1384,7 +1394,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-main-image .artwork-placeholder {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #1a0e05, #4a2c15);
+  background: linear-gradient(135deg, #0d0520, #4361ee);
   font-size: 10rem;
 }
 
@@ -1651,7 +1661,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(247,37,133,0.1) 0%, transparent 70%);
 }
 
 .artist-hero-inner {
@@ -2340,7 +2350,7 @@ h1, h2, h3, h4, h5, h6 {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(247,37,133,0.08) 0%, transparent 70%);
 }
 
 .page-header-title {
